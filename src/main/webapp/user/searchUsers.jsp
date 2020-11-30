@@ -54,21 +54,35 @@
 						<label>Nome</label> <input type="text" name="nome" id="nomeUser"
 							class="form-control"
 							placeholder="Inserire almeno i primi tre caratteri">
-
 					</div>
 
 					<div class="form-group col-md-6">
 						<label>Cognome</label> <input type="text" name="cognome"
 							id="cognomeUser" class="form-control"
 							placeholder="Inserire almeno i primi tre caratteri">
-
 					</div>
 
 					<div class="form-group col-md-6">
 						<label>Username</label> <input type="text" name="username"
 							id="unameUser" class="form-control"
 							placeholder="Inserire username">
-
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label>Esperienza Accumulata</label> <input type="number" name="expAcc"
+							id="esperienzaAccumulata" class="form-control"
+							placeholder="Inserire Totale Esperienza da Ricercare" required>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label>Credito Accumulato</label> <input type="number" step="0.50" name="creditAcc"
+							id="creditoAccumulato" class="form-control"
+							placeholder="Inserire Importo Credito da Ricercare" required>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label>Data Registrazione</label> <input type="date" name="data"
+							id="dataRegistrazione" class="form-control" required>
 					</div>
 
 					<div class="form-group col-md-6">

@@ -56,6 +56,16 @@ import it.pokeronline.model.tavolo.Tavolo;
 		public User() {
 		}
 
+		public User(String nome, String cognome, String username, Long expAccumulata,
+				Double creditoAccumulato, Date dataRegistrazione) {
+			this.nome = nome;
+			this.cognome = cognome;
+			this.username = username;
+			this.expAccumulata = expAccumulata;
+			this.creditoAccumulato = creditoAccumulato;
+			this.dataRegistrazione = dataRegistrazione;
+		}
+		
 		public User(String nome, String cognome, String username, String password, Long expAccumulata,
 				Double creditoAccumulato, Date dataRegistrazione) {
 			this.nome = nome;

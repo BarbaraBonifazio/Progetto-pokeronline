@@ -9,7 +9,7 @@
 	  <!-- Bootstrap CSS -->
 	  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" >
 	  <!-- CSS Personalizzato -->
-	  <link rel="stylesheet" href="${pageContext.request.contextPath}/mystyle/css/buttons.css" >
+	  <link rel="stylesheet" href="${pageContext.request.contextPath}/mystyle/css/global.css" >
 	  <title>Accedi</title>
 	  
 	  <!-- Favicons -->
