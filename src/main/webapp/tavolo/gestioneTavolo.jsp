@@ -34,7 +34,7 @@ body {
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<h3 class="display-5">Benvenuto alla gestione dei tuoi tavoli da gioco!</h3>				
+				<h3 class="display-5 text-center" >Gestisci i tuoi Tavoli</h3>				
 			</div>
 		</div>
 
@@ -44,7 +44,8 @@ body {
 					<h2>Crea Nuovo Tavolo</h2>
 					<p>Descrizione Funzionalità</p>
 					<p>
-						<a class="btn btn-secondary" href="#" role="button" Style="background-color:green" >Crea &raquo;</a>
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareInsertTavoloServlet?idUser=${user.id}" 
+							role="button" Style="background-color:green; border-color:#327827" >Crea &raquo;</a>
 					</p>
 				</div>
 				<div class="col-md-6">
@@ -52,7 +53,7 @@ body {
 					<p>Descrizione Funzionalità</p>
 					<p>
 						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareSearchTavoliServlet?idUser=${user.id}" 
-						role="button" Style="background-color:green">Ricerca &raquo;</a>
+							role="button" Style="background-color:green; border-color:#327827">Ricerca &raquo;</a>
 					</p>
 				</div>
 			</div>

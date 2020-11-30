@@ -59,10 +59,18 @@ public class TavoloDTO {
 
 	public List<String> errors() {
 		List<String> result = new ArrayList<String>();
-		if (StringUtils.isBlank(this.expMin) || !Util.isLong(this.expMin))
+		if (StringUtils.isBlank(this.expMin) || !Util.isLong(this.expMin)) {
 			result.add("Il campo Esperienza Minima dev'essere valorizzato con un numero");
-		if (StringUtils.isBlank(this.cifraMin) || !Util.isDouble(this.cifraMin))
+		} else if(Long.parseLong(this.expMin) < 0){
+			result.add("Il campo Esperienza Minima non dev'essere minore con un numero");
+		}
+			
+		if (StringUtils.isBlank(this.cifraMin) || !Util.isDouble(this.cifraMin)) {
 			result.add("Il campo Cifra Minima dev'essere valorizzato con un numero decimale");
+		} else if(Double.parseDouble(this.cifraMin) <= 0) {
+			
+		}
+		
 		if (StringUtils.isBlank(this.denominazione))
 			result.add("Il campo Denominazione non può essere vuoto");
 		return result;

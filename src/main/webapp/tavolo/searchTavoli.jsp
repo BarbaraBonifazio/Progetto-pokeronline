@@ -51,12 +51,6 @@
 					
 					<input class="form-control" type="hidden" name="idUtente" id="idUtenteCreatore" 
 								 value="${utentePerSearchTavoli.id }">
-					
-					<div class="form-group col-md-6">
-						<label>Denominazione</label> <input type="text" name="denominazione"
-							id="denominazione" class="form-control"
-							placeholder="Inserire almeno i primi tre caratteri" required>
-					</div>
 
 					<div class="form-group col-md-6">
 						<label>Esperienza Minima</label> <input type="number" name="expMin"
@@ -68,6 +62,12 @@
 						<label>Data Creazione</label> <input type="date" name="data"
 							id="dataCreazione" class="form-control" required>
 					</div>
+					
+					<div class="form-group col-md-6">
+						<label>Denominazione</label> <input type="text" name="denominazione"
+							id="denominazione" class="form-control"
+							placeholder="Inserire almeno i primi tre caratteri" required>
+					</div>
 
 					<div class="form-group col-md-6">
 						<label>Puntata Minima</label> <input type="number" step="0.50" name="cifraMin"
@@ -76,7 +76,7 @@
 					</div>
 
 					<button type="submit" name="submit" value="submit" id="submit"
-						class="btn btn-primary" Style="background-color:green">Cerca</button>
+						class="btn btn-primary" Style="background-color:green; border-color:#327827">Cerca</button>
 
 				</form>
 

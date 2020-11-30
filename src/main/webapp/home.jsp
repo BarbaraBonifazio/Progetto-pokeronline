@@ -34,40 +34,40 @@ body {
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<h1 class="display-3">Benvenuto a Poker Online!</h1>
-				<p>Inizia a giocare! Che aspetti?</p>
+				<h1 class="display-3 text-center">Benvenuto a Poker Online!</h1>
+				<p class="text-center">Inizia a giocare! Che aspetti?</p>
 	
 			</div>
 		</div>
 		
 
-		<div class="container">
-			<div class="row" Style="padding-top:132px">
-				<div class="col-md-4">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-4" Style="padding-top:120px">
 					<h2>Play Management</h2>
-					<p> Descrizione Funzionalità </p>
+					<p> Gioca! </p>
 					<p>
-						<a class="btn btn-secondary" href="#" role="button" Style="background-color:green !important">View
-							details &raquo;</a>
+						<a class="btn btn-secondary" href="#" role="button" Style="background-color:green !important; 
+								border-color:#327827">Accedi &raquo;</a>
 					</p>
 				</div>
 				<c:if test="${sessionScope.isSpecialPlayer eq 'true'}">
-				<div class="col-md-4">
-					<h2>Gestione Tavolo</h2>
-					<p> Descrizione Funzionalità </p>
+				<div class="col-md-4" Style="padding-top:120px">
+					<h2>Gestione Tavoli</h2>
+					<p> Gestisci i tuoi tavoli! </p>
 					<p>
 						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareGestioneTavolo" role="button"
-						Style="background-color:green !important" >Gestisci &raquo;</a>
+						Style="background-color:green !important; border-color:#327827" >Gestisci &raquo;</a>
 					</p>
 				</div>
 				</c:if>
 				<c:if test="${sessionScope.isAdmin eq 'true'}">
-					<div class="col-md-4">
-						<h2>Gestione Amministrazione</h2>
-						<p> Descrizione Funzionalità</p>
+					<div class="col-md-4" Style="padding-top:80px">
+						<h2 >Gestione Amministrazione</h2>
+						<p> Gestione utenze giocatori</p>
 						<p>
-							<a class="btn btn-secondary" href="#" role="button" Style="background-color:green !important">View
-								details &raquo;</a>
+							<a class="btn btn-secondary" href="#" role="button" Style="background-color:green !important;
+									border-color:#327827">Gestisci &raquo;</a>
 						</p>
 					</div>
 				</c:if>

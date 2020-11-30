@@ -72,10 +72,10 @@
 					<table class='table table-striped '>
 						<thead>
 							<tr>
-								<th>Denominazione</th>
 								<th>Esperienza Minima</th>
-								<th>Data Creazione</th>
 								<th>Puntata Minima</th>
+								<th>Denominazione</th>
+								<th>Data Creazione</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -83,31 +83,35 @@
 							<c:forEach items="${requestScope.listaTavoli}"
 								var="tavolo">
 								<tr>
-
-									<td>${tavolo.denominazione}</td>
+	
 									<td>${tavolo.expMin}</td>
 									<td>${tavolo.cifraMin}</td>
+									<td>${tavolo.denominazione}</td>
 									<td>${tavolo.dataCreazione}</td>
 
 											
 											<!-- BOTTONE VISUALIZZA -->
-									<td><a Style="color:green !important" class="btn  btn-sm btn-outline-secondary" 
+									<td><a class="btn  btn-sm btn-outline-secondary" 
 										href="${pageContext.request.contextPath}
-												/FindTavoloServlet?idParamPerDettaglioTavolo=${tavolo.id}
+												/FindTavoloServlet?idParamPerDettaglioTavolo=${tavolo.id }&idUser=${user.id}
 												">Visualizza</a>
 												
 											<!-- BOTTONE MODIFICA -->
-										<a Style="color:green !important" class="btn  btn-sm btn-outline-primary"
+										<a Style="color:green !important; border-color:#327827" class="btn  btn-sm btn-outline-primary"
 										href="${pageContext.request.contextPath}
-														/PrepareUpdateTavoloServlet?idDaInviareAExecuteUpdate=${tavolo.id}
+														/PrepareUpdateTavoloServlet?idDaInviareAExecuteUpdate=${tavolo.id}&
+												denominazionePerTornareAllaRicercaEffettuata=${requestScope.titoloPerTornareAllaRicercaEffettuata}&
+												expMinPerTornareAllaRicercaEffettuata=${requestScope.tramaPerTornareAllaRicercaEffettuata}&
+												cifraMinPerTornareAllaRicercaEffettuata=${requestScope.generePerTornareAllaRicercaEffettuata}&
+												dataCreazionePerTornareAllaRicercaEffettuata=${requestScope.autorePerTornareAllaRicercaEffettuata}
 														">Modifica</a>
 														
 											<!-- BOTTONE ELIMINA -->
-										<a Style="color:green !important" class="btn btn-outline-danger btn-sm"
+										<a class="btn btn-outline-danger btn-sm"
 										href="${pageContext.request.contextPath}
 														/ConfirmDeleteTavoloServlet?idDaInviareAExecuteDelete=${tavolo.id}&
 												denominazionePerTornareAllaRicercaEffettuata=${requestScope.titoloPerTornareAllaRicercaEffettuata}&
-												expMinaPerTornareAllaRicercaEffettuata=${requestScope.tramaPerTornareAllaRicercaEffettuata}&
+												expMinPerTornareAllaRicercaEffettuata=${requestScope.tramaPerTornareAllaRicercaEffettuata}&
 												cifraMinPerTornareAllaRicercaEffettuata=${requestScope.generePerTornareAllaRicercaEffettuata}&
 												dataCreazionePerTornareAllaRicercaEffettuata=${requestScope.autorePerTornareAllaRicercaEffettuata}
 														">Cancella</a>
