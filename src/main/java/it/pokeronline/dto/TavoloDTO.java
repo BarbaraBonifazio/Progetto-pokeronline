@@ -62,15 +62,13 @@ public class TavoloDTO {
 		if (StringUtils.isBlank(this.expMin) || !Util.isLong(this.expMin)) {
 			result.add("Il campo Esperienza Minima dev'essere valorizzato con un numero");
 		} else if(Long.parseLong(this.expMin) < 0){
-			result.add("Il campo Esperienza Minima non dev'essere minore con un numero");
-		}
-			
+			result.add("Il campo Esperienza Minima non dev'essere negativo");
+		 }	
 		if (StringUtils.isBlank(this.cifraMin) || !Util.isDouble(this.cifraMin)) {
-			result.add("Il campo Cifra Minima dev'essere valorizzato con un numero decimale");
+			result.add("Il campo Puntata Minima dev'essere valorizzato con un numero decimale");
 		} else if(Double.parseDouble(this.cifraMin) <= 0) {
-			
-		}
-		
+			result.add("Il campo Puntata Minima non dev'essere negativo");
+		 }
 		if (StringUtils.isBlank(this.denominazione))
 			result.add("Il campo Denominazione non può essere vuoto");
 		return result;

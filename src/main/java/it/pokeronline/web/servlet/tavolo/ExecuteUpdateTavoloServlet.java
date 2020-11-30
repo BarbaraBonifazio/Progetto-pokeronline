@@ -19,32 +19,32 @@ import it.pokeronline.model.user.User;
 import it.pokeronline.service.tavolo.TavoloService;
 import it.pokeronline.service.user.UserService;
 
-
-@WebServlet("/ExecuteInsertTavoloServlet")
-public class ExecuteInsertTavoloServlet extends HttpServlet {
+@WebServlet("/ExecuteUpdateTavoloServlet")
+public class ExecuteUpdateTavoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	@Autowired
 	private TavoloService tavoloService;
-
+	
 	@Autowired
 	private UserService userService;
-
+	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 	
-    public ExecuteInsertTavoloServlet() {
+    public ExecuteUpdateTavoloServlet() {
         super();
     }
-    
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String idTavoloInput = request.getParameter("idTavolo");
 		
 		String expMinInput = request.getParameter("expMin");
 		String cifraMinInput = request.getParameter("cifraMin");
@@ -53,26 +53,38 @@ public class ExecuteInsertTavoloServlet extends HttpServlet {
 
 		TavoloDTO tavoloDTO = new TavoloDTO(expMinInput, cifraMinInput, denominazioneInput);
 		
+		
 		//effettuo la validazione dell'input e se non va bene rimando in pagina
-				List<String> tavoloErrors = tavoloDTO.errors();
-				if (!tavoloErrors.isEmpty()) {
-					request.setAttribute("tavoloAttribute", tavoloDTO);
-					request.setAttribute("tavoloErrors", tavoloErrors);
-					request.setAttribute("idUserPerInsertTavolo", idUserInput);
-					request.getRequestDispatcher("/tavolo/insert.jsp").forward(request, response);
-					return;
-				}
+		List<String> tavoloErrors = tavoloDTO.errors();
+		if (!tavoloErrors.isEmpty()) {
+			request.setAttribute("tavoloAttribute", tavoloDTO);
+			request.setAttribute("tavoloErrors", tavoloErrors);
+			request.setAttribute("idTavoloPerUpdate", idTavoloInput);
+			request.setAttribute("idUserPerUpdateTavolo", idUserInput);
+			request.getRequestDispatcher("/tavolo/update.jsp").forward(request, response);
+			return;
+		}
 		
 		// se arrivo qui significa che va bene
 		Tavolo tavoloInstance = TavoloDTO.buildModelFromDto(tavoloDTO);
+		
 		User userDaDB = userService.caricaSingoloUser(Long.parseLong(idUserInput));
-		tavoloInstance.setUser(userDaDB);
+		Tavolo tavoloDaDb = tavoloService.caricaSingoloTavolo(Long.parseLong(idTavoloInput));
+		tavoloDaDb.setExpMin(tavoloInstance.getExpMin());
+		tavoloDaDb.setCifraMin(tavoloInstance.getCifraMin());
+		tavoloDaDb.setDenominazione(tavoloInstance.getDenominazione());
+		tavoloDaDb.setUser(userDaDB);
 
-		request.setAttribute("userAttribute", idUserInput);
-		tavoloService.inserisciNuovo(tavoloInstance);
+		
+		try {
+			tavoloService.aggiorna(tavoloDaDb);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		// vado in pagina con ok
-		request.setAttribute("successMessage", "Inserimento avvenuto con successo");
+		request.setAttribute("userAttribute", idUserInput);
+		request.setAttribute("messaggioConferma", "Modifica avvenuta con successo");
 		request.setAttribute("listaTavoli", tavoloService.listAllTavoli());
 		request.getRequestDispatcher("/tavolo/results.jsp").forward(request, response);
 	}

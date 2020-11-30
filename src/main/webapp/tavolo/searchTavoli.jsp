@@ -37,14 +37,15 @@
 		<div class='card'>
 			<div class='card-header'>
 				<h5>Cerca Tavoli</h5>
+			</div>
+			<div class='card-body'>
+				
 				<a Style="color:green !important" class="text-right"
 					href="${pageContext.request.contextPath}/tavolo/gestioneTavolo.jsp"
 					class='btn btn-outline-secondary' style='width: 80px'> <i
 					class='fa fa-chevron-left'></i> Indietro
 				</a>
-			</div>
-			<div class='card-body'>
-				
+				<hr>
 				<form method="get"
 					action="${pageContext.request.contextPath}/ExecuteFindTavoliServlet"
 					novalidate>
@@ -79,7 +80,7 @@
 						class="btn btn-primary" Style="background-color:green; border-color:#327827">Cerca</button>
 
 				</form>
-
+			
 				<!-- end card-body -->
 			</div>
 

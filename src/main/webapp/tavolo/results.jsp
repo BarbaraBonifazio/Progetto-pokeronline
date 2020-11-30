@@ -66,7 +66,7 @@
 					class='btn btn-outline-secondary' style='width: 80px'> <i
 					class='fa fa-chevron-left'></i> Indietro
 				</a>
-
+				
 				<%-- </c:if> --%>
 				<div class='table-responsive'>
 					<table class='table table-striped '>
@@ -99,7 +99,7 @@
 											<!-- BOTTONE MODIFICA -->
 										<a Style="color:green !important; border-color:#327827" class="btn  btn-sm btn-outline-primary"
 										href="${pageContext.request.contextPath}
-														/PrepareUpdateTavoloServlet?idDaInviareAExecuteUpdate=${tavolo.id}&
+														/PrepareUpdateTavoloServlet?idDaInviareAExecuteUpdate=${tavolo.id}&idUser=${user.id}&
 												denominazionePerTornareAllaRicercaEffettuata=${requestScope.titoloPerTornareAllaRicercaEffettuata}&
 												expMinPerTornareAllaRicercaEffettuata=${requestScope.tramaPerTornareAllaRicercaEffettuata}&
 												cifraMinPerTornareAllaRicercaEffettuata=${requestScope.generePerTornareAllaRicercaEffettuata}&
@@ -109,7 +109,7 @@
 											<!-- BOTTONE ELIMINA -->
 										<a class="btn btn-outline-danger btn-sm"
 										href="${pageContext.request.contextPath}
-														/ConfirmDeleteTavoloServlet?idDaInviareAExecuteDelete=${tavolo.id}&
+														/ConfirmDeleteTavoloServlet?idDaInviareAExecuteDelete=${tavolo.id}&idUser=${user.id}&
 												denominazionePerTornareAllaRicercaEffettuata=${requestScope.titoloPerTornareAllaRicercaEffettuata}&
 												expMinPerTornareAllaRicercaEffettuata=${requestScope.tramaPerTornareAllaRicercaEffettuata}&
 												cifraMinPerTornareAllaRicercaEffettuata=${requestScope.generePerTornareAllaRicercaEffettuata}&

@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import it.pokeronline.model.ruolo.Codice;
-import it.pokeronline.model.ruolo.Ruolo;
 import it.pokeronline.model.user.User;
 import it.pokeronline.service.user.UserService;
 

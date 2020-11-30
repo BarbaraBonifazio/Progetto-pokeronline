@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
 
 

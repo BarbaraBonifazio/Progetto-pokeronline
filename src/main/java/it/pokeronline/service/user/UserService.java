@@ -1,13 +1,7 @@
 package it.pokeronline.service.user;
 
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
-import org.springframework.data.repository.query.Param;
-
-import it.pokeronline.model.ruolo.Codice;
-import it.pokeronline.model.ruolo.Ruolo;
 import it.pokeronline.model.user.User;
 
 public interface UserService {

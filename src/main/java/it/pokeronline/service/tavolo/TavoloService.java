@@ -9,11 +9,11 @@ public interface TavoloService {
 
 	public Tavolo caricaSingoloTavolo(Long id);
 
-	public void aggiorna(Tavolo tavoloInstance);
+	public boolean aggiorna(Tavolo tavoloInstance) throws Exception;
 
 	public void inserisciNuovo(Tavolo tavoloInstance);
 
-	public void rimuovi(Tavolo tavoloInstance);
+	public boolean rimuovi(Tavolo tavoloInstance) throws Exception;
 	
 	public List<Tavolo> findByExample(Tavolo example);
 }

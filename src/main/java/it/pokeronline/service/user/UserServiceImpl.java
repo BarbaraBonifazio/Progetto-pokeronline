@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
-import it.pokeronline.repository.ruolo.RuoloRepository;
 import it.pokeronline.repository.user.UserRepository;
 
 @Component
@@ -22,9 +21,6 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private RuoloRepository ruoloRepository;
 	
 	// questo mi serve per il findByExample2 che risulta 'a mano'
 	// o comunque in tutti quei casi in cui ho bisogno di costruire custom query nel service

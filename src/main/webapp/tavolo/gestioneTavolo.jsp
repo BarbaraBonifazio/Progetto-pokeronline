@@ -34,7 +34,7 @@ body {
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<h3 class="display-5 text-center" >Gestisci i tuoi Tavoli</h3>				
+				<h2 class="display-5 text-center" >Gestisci i tuoi Tavoli</h2>				
 			</div>
 		</div>
 
@@ -62,9 +62,9 @@ body {
 
 		</div>
 		<!-- /container -->
-		<jsp:include page="../footer.jsp" />
+		
 	</main>
 
-	
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

@@ -44,7 +44,7 @@ public class ExecuteFindTavoliServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String denominazioneInput = StringUtils.isNotEmpty(request.getParameter("nomeInput"))? request.getParameter("nomeInput"):null;
+		String denominazioneInput = StringUtils.isNotEmpty(request.getParameter("denominazione"))? request.getParameter("denominazione"):null;
 		Long expMinInput = StringUtils.isNumeric(request.getParameter("expMin"))? Long.parseLong(request.getParameter("expMin")):null;
 		Double cifraMinInput = StringUtils.isNumeric(request.getParameter("cifraMin"))? Double.parseDouble(request.getParameter("cifraMin")):null;
 		Long userInput = StringUtils.isNumeric(request.getParameter("idUtente"))? Long.parseLong(request.getParameter("idUtente")):null;
