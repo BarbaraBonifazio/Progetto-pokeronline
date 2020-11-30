@@ -4,6 +4,8 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" >
+<!-- CSS Personalizzato -->
+<link rel="stylesheet" href="./mystyle/css/buttons.css" >
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/assets/img/favicons/apple-touch-icon.png" sizes="180x180">

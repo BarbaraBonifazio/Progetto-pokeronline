@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+
+/* a.btn.btn-secondary:active{
+    background:olive !important;
+} */
+
+a.btn.btn-secondary:focus{
+    border-color:#00ff00 !important;
+}
+
+a.btn.btn-secondary{
+	
+	background-color:green !important;
+	border-color:#327827 !important;
+}
+
+
+button.btn:active{
+    border-color:#00ff00 !important;
+} 
+
+button.btn:focus{
+    border-color:#00ff00 !important;
+}
+
+.btn-primary:focus{
+	box-shadow: #00ff00 !important;
+}
+
+button{
+	background-color:green !important;
+	border-color:#327827 !important;
+}
+
+box-shadow{
+	border-color:#327827 !important;
+}
+
+input{
+	color:#327827 !important;
+}
+
+.form-control:focus{
+	border-color: rgba(126, 239, 104, 0.8);
+  box-shadow: 0 1px 1px #327827 inset, 0 0 8px #327827;
+  outline: 0 none;
+
+}
+
+

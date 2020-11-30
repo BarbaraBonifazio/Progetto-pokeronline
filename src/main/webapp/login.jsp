@@ -8,7 +8,8 @@
 	
 	  <!-- Bootstrap CSS -->
 	  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" >
-	
+	  <!-- CSS Personalizzato -->
+	  <link rel="stylesheet" href="${pageContext.request.contextPath}/mystyle/css/buttons.css" >
 	  <title>Accedi</title>
 	  
 	  <!-- Favicons -->
@@ -78,7 +79,7 @@
 		  <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
 		  <div class="invalid-feedback" id="errorPwd"> Il campo password risulta vuoto!</div>
 		  <br>
-		  <button class="btn btn-lg btn-primary btn-block" type="submit" Style="background-color:green; border-color:#327827">Accedi</button>
+		  <button class="btn btn-lg btn-primary btn-block" type="submit">Accedi</button>
 		  <br>
 		  <a Style="color:green !important" href="${pageContext.request.contextPath}/PrepareInsertUserByRegistrationServlet">Non sono registrato</a>
 		  <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>

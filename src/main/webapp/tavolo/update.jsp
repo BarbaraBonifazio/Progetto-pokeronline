@@ -117,7 +117,7 @@
 					</div>
 
 					<button type="submit" name="submit" value="submit" id="submit"
-						class="btn btn-primary" Style="background-color:green; border-color:#327827">Modifica</button>
+						class="btn btn-primary">Modifica</button>
 
 				</form>
 

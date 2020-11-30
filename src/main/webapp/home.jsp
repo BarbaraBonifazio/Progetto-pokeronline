@@ -7,6 +7,7 @@
 
 <!-- Custom styles for this template -->
 <link href="./assets/css/global.css" rel="stylesheet">
+
 <style type="text/css">
 body {
 	padding-top: 3.5rem;
@@ -47,8 +48,7 @@ body {
 					<h2>Play Management</h2>
 					<p> Gioca! </p>
 					<p>
-						<a class="btn btn-secondary" href="#" role="button" Style="background-color:green !important; 
-								border-color:#327827">Accedi &raquo;</a>
+						<a class="btn btn-secondary" href="#" role="button">Accedi &raquo;</a>
 					</p>
 				</div>
 				<c:if test="${sessionScope.isSpecialPlayer eq 'true'}">
@@ -56,8 +56,8 @@ body {
 					<h2>Gestione Tavoli</h2>
 					<p> Gestisci i tuoi tavoli! </p>
 					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareGestioneTavolo" role="button"
-						Style="background-color:green !important; border-color:#327827" >Gestisci &raquo;</a>
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareGestioneTavolo" role="button">
+						Gestisci &raquo;</a>
 					</p>
 				</div>
 				</c:if>
@@ -66,8 +66,8 @@ body {
 						<h2 >Gestione Amministrazione</h2>
 						<p> Gestione utenze giocatori</p>
 						<p>
-							<a class="btn btn-secondary" href="#" role="button" Style="background-color:green !important;
-									border-color:#327827">Gestisci &raquo;</a>
+							<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareFindUsersServlet" role="button"> 
+							Gestisci &raquo;</a>
 						</p>
 					</div>
 				</c:if>
