@@ -59,7 +59,7 @@ public class CheckAuthFilter implements Filter {
 			}
 			
 			//controllo che utente abbia ruolo specialPlayer se nel path risulta presente /tavolo/
-			if(isPathForOnlySpecialPlayers(pathAttuale) && !userInSession.isSpecialPlayer()) {
+			if(isPathForOnlySpecialPlayers(pathAttuale) && userInSession.isPlayer()) {
 				httpRequest.setAttribute("messaggio", "Non si è autorizzati alla navigazione richiesta");
 				httpRequest.getRequestDispatcher("/home.jsp").forward(httpRequest, httpResponse);
 				return;
