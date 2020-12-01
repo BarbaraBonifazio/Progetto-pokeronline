@@ -36,7 +36,7 @@
 							<div class="form-group col-md-6">
 								
 									<a class="btn btn-danger btn-lg" role="button"
-									href="${pageContext.request.contextPath}/ExecuteFindTavoliServlet?
+									href="${pageContext.request.contextPath}/tavolo/ExecuteFindTavoliServlet?
 										denominazione=${denominazionePerTornareAllaRicercaEffettuata}&
 										expMin=${expMinPerTornareAllaRicercaEffettuata}&
 										cifraMin=${cifraMinPerTornareAllaRicercaEffettuata}&

@@ -100,7 +100,7 @@
 					</div>
 
 					<div class="form-group col-md-6">
-						<label>Puntata Minima</label> <input type="number" step="0.50" name="cifraMin"
+						<label>Puntata Minima</label> <input type="number" name="cifraMin"
 							id="cifraMinima" class="form-control"
 							placeholder="Inserire Puntata Minima" value="${tavoloAttribute.cifraMin }" required>
 							<div class="invalid-feedback" id="errorCifraMin"> Il campo Puntata Minima risulta vuoto!</div>

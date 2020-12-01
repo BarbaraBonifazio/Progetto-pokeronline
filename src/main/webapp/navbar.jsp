@@ -26,12 +26,12 @@
 				class="nav-link dropdown-toggle" href="#" id="dropdown01"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cerca</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					 <a	class="dropdown-item" href="${pageContext.request.contextPath}/libro/PrepareFindLibriServlet">Play Management</a> 
-				 		<c:if test="${sessionScope.isSpecialPlayer eq 'true'}">
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/autore/PrepareFindAutoriServlet">Gestione Tavolo</a>
+					 <a	class="dropdown-item" href="${pageContext.request.contextPath}/play/PreparePlayServlet">Play Management</a> 
+				 		<c:if test="${!sessionScope.isPlayer eq 'true'}">
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/tavolo/PrepareGestioneTavolo">Gestione Tavolo</a>
 						</c:if>
 						<c:if test="${sessionScope.isAdmin eq 'true'}">
-						<a class="dropdown-item" href="${pageContext.request.contextPath}/utente/PrepareFindUtentiServlet">Gestione Amministrazione</a>
+						<a class="dropdown-item" href="${pageContext.request.contextPath}/user/PrepareFindUsersServlet">Gestione Amministrazione</a>
 						</c:if>
 				</div></li>
 

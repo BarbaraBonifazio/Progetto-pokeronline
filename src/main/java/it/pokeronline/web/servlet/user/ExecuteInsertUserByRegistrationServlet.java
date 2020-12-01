@@ -60,7 +60,7 @@ public class ExecuteInsertUserByRegistrationServlet extends HttpServlet {
 		//se arrivo qui significa che va bene
 		User userInstance = UserDTO.buildModelFromDto(userDTO);
 		userInstance.setExpAccumulata(0L);
-		userInstance.setCreditoAccumulato(0.0);
+		userInstance.setCreditoAccumulato(0);
 //		Date date = new Date();  
 //		userInstance.setDataRegistrazione(date);	
 		userService.inserisciNuovo(userInstance);

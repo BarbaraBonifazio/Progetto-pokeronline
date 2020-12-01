@@ -24,7 +24,7 @@ public class Tavolo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long expMin;
-	private Double cifraMin;
+	private Integer cifraMin;
 	private String denominazione;
 
 	@Temporal(TemporalType.DATE)
@@ -40,14 +40,14 @@ public class Tavolo {
 	public Tavolo() {
 	}
 	
-	public Tavolo(Double cifraMin, String denominazione, Date dataCreazione) {
+	public Tavolo(Integer cifraMin, String denominazione, Date dataCreazione) {
 		super();
 		this.cifraMin = cifraMin;
 		this.denominazione = denominazione;
 		this.dataCreazione = dataCreazione;
 	}
 	
-	public Tavolo(Long expMin, Double cifraMin, String denominazione, Date dataCreazione) {
+	public Tavolo(Long expMin, Integer cifraMin, String denominazione, Date dataCreazione) {
 		super();
 		this.expMin = expMin;
 		this.cifraMin = cifraMin;
@@ -71,11 +71,11 @@ public class Tavolo {
 		this.expMin = expMin;
 	}
 
-	public Double getCifraMin() {
+	public Integer getCifraMin() {
 		return cifraMin;
 	}
 
-	public void setCifraMin(Double cifraMin) {
+	public void setCifraMin(Integer cifraMin) {
 		this.cifraMin = cifraMin;
 	}
 

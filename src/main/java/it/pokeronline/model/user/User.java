@@ -34,7 +34,7 @@ import it.pokeronline.model.tavolo.Tavolo;
 		private String username;
 		private String password;
 		private Long expAccumulata;
-		private Double creditoAccumulato;
+		private Integer creditoAccumulato;
 		
 		@Temporal(TemporalType.DATE)
 		private Date dataRegistrazione = new Date();
@@ -57,7 +57,7 @@ import it.pokeronline.model.tavolo.Tavolo;
 		}
 
 		public User(String nome, String cognome, String username, Long expAccumulata,
-				Double creditoAccumulato, Date dataRegistrazione) {
+				Integer creditoAccumulato, Date dataRegistrazione) {
 			this.nome = nome;
 			this.cognome = cognome;
 			this.username = username;
@@ -67,7 +67,7 @@ import it.pokeronline.model.tavolo.Tavolo;
 		}
 		
 		public User(String nome, String cognome, String username, String password, Long expAccumulata,
-				Double creditoAccumulato, Date dataRegistrazione) {
+				Integer creditoAccumulato, Date dataRegistrazione) {
 			this.nome = nome;
 			this.cognome = cognome;
 			this.username = username;
@@ -149,11 +149,11 @@ import it.pokeronline.model.tavolo.Tavolo;
 			this.expAccumulata = expAccumulata;
 		}
 
-		public Double getCreditoAccumulato() {
+		public Integer getCreditoAccumulato() {
 			return creditoAccumulato;
 		}
 
-		public void setCreditoAccumulato(Double creditoAccumulato) {
+		public void setCreditoAccumulato(Integer creditoAccumulato) {
 			this.creditoAccumulato = creditoAccumulato;
 		}
 

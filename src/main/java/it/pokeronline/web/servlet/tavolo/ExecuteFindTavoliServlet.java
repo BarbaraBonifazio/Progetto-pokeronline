@@ -1,9 +1,7 @@
 package it.pokeronline.web.servlet.tavolo;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -17,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import it.pokeronline.dto.TavoloDTO;
 import it.pokeronline.model.tavolo.Tavolo;
 import it.pokeronline.model.user.User;
 import it.pokeronline.service.tavolo.TavoloService;
@@ -44,26 +43,33 @@ public class ExecuteFindTavoliServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String denominazioneInput = StringUtils.isNotEmpty(request.getParameter("denominazione"))? request.getParameter("denominazione"):null;
-		Double cifraMinInput = StringUtils.isNumeric(request.getParameter("cifraMin"))? Double.parseDouble(request.getParameter("cifraMin")):null;
+		String denominazioneInput = request.getParameter("denominazione");
+		String cifraMinInput = request.getParameter("cifraMin");
+		String dataInput = request.getParameter("data");
 		Long userInput = StringUtils.isNumeric(request.getParameter("idUtente"))? Long.parseLong(request.getParameter("idUtente")):null;
 
-		try {
-			Date dateInput = StringUtils.isNotEmpty(request.getParameter("data"))? 
-								new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")): null;
-								
-			Tavolo tavolo = new Tavolo(cifraMinInput, denominazioneInput, dateInput);
+		boolean search = true;
+		TavoloDTO tavoloDTO = new TavoloDTO(cifraMinInput, denominazioneInput, dataInput, search);
+		
+			//effettuo la validazione dell'input e se non va bene rimando in pagina
+			List<String> tavoloErrors = tavoloDTO.errorsSearch();
+			if (!tavoloErrors.isEmpty()) {
+				request.setAttribute("tavoloAttribute", tavoloDTO);
+				request.setAttribute("tavoloErrors", tavoloErrors);
+				request.setAttribute("utentePerSearchTavoli", userInput);
+				request.getRequestDispatcher("/tavolo/insert.jsp").forward(request, response);
+				return;
+			}
 
-			 User userDaDb = userService.caricaSingoloUser(userInput);
-			 tavolo.setUser(userDaDb);
-			 request.setAttribute("listaTavoli", tavoloService.findByExample(tavolo));
-			 
+		// se arrivo qui significa che va bene
+		
+		Tavolo tavoloInstance = TavoloDTO.buildModelFromDto(tavoloDTO);
+		User userDaDb = userService.caricaSingoloUser(userInput);
+		tavoloInstance.setUser(userDaDb);
+		request.setAttribute("listaTavoli", tavoloService.findByExample(tavoloInstance));
+					 
 		RequestDispatcher rd = request.getRequestDispatcher("/tavolo/results.jsp");
 		rd.forward(request, response);
-		
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -33,6 +33,14 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
+		
+		<div class="alert alert-danger ${not empty tavoloErrors?'':'d-none' }" role="alert">
+		<c:forEach var = "errorItem" items="${tavoloErrors }">
+        	<ul>
+				<li> ${errorItem }</li>	
+			</ul>
+      	</c:forEach>
+		</div>
 
 		<div class='card'>
 			<div class='card-header'>
@@ -56,18 +64,18 @@
 					<div class="form-group col-md-6">
 						<label>Denominazione</label> <input type="text" name="denominazione"
 							id="denominazione" class="form-control"
-							placeholder="Inserire almeno i primi tre caratteri" required>
+							placeholder="Inserire almeno i primi tre caratteri" value="${tavoloAttribute.denominazione }" required>
 					</div>
 					
 					<div class="form-group col-md-6">
 						<label>Data Creazione</label> <input type="date" name="data"
-							id="dataCreazione" class="form-control" required>
+							id="dataCreazione" class="form-control" value="${tavoloAttribute.dataCreazione }"required>
 					</div>
 
 					<div class="form-group col-md-6">
-						<label>Puntata Minima</label> <input type="number" step="0.50" name="cifraMin"
+						<label>Puntata Minima</label> <input type="number" name="cifraMin"
 							id="cifraMinima" class="form-control"
-							placeholder="Inserire Puntata Minima" required>
+							placeholder="Inserire Puntata Minima" value="${tavoloAttribute.cifraMin }"required>
 					</div>
 
 					<button type="submit" name="submit" value="submit" id="submit"

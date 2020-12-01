@@ -47,7 +47,7 @@ public class ExecuteFindUsersServlet extends HttpServlet {
 		String cognomeInput = StringUtils.isNotEmpty(request.getParameter("cognome"))? request.getParameter("cognome"):null;
 		String usernameInput = StringUtils.isNotEmpty(request.getParameter("username"))? request.getParameter("username"):null;
 		Long expInput = StringUtils.isNumeric(request.getParameter("expAcc"))? Long.parseLong(request.getParameter("expAcc")):null;
-		Double creditoInput = StringUtils.isNumeric(request.getParameter("creditAcc"))? Double.parseDouble(request.getParameter("creditAcc")):null;
+		Integer creditoInput = StringUtils.isNumeric(request.getParameter("creditAcc"))? Integer.parseInt(request.getParameter("creditAcc")):null;
 		
 		try {			
 			 Date dataCheck1 = StringUtils.isNotEmpty(request.getParameter("data"))? 

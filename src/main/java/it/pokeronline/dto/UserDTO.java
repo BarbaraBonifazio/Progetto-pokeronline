@@ -119,7 +119,7 @@ public class UserDTO {
 		result.setUsername(userDTO.getUsername());
 		result.setPassword(userDTO.getPassword());
 		result.setExpAccumulata(Long.parseLong(userDTO.getExpAccumulata()));
-		result.setCreditoAccumulato(Double.parseDouble(userDTO.getCreditoAccumulato()));
+		result.setCreditoAccumulato(Integer.parseInt(userDTO.getCreditoAccumulato()));
 		return result;
 	}
 

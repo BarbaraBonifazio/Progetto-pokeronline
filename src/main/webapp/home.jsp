@@ -51,12 +51,12 @@ body {
 						<a class="btn btn-secondary" href="#" role="button">Accedi &raquo;</a>
 					</p>
 				</div>
-				<c:if test="${sessionScope.isSpecialPlayer eq 'true'}">
+				<c:if test="${!sessionScope.isPlayer eq 'true'}">
 				<div class="col-md-4" Style="padding-top:120px">
 					<h2>Gestione Tavoli</h2>
 					<p> Gestisci i tuoi tavoli! </p>
 					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareGestioneTavolo" role="button">
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareGestioneTavolo" role="button">
 						Gestisci &raquo;</a>
 					</p>
 				</div>
@@ -66,7 +66,7 @@ body {
 						<h2 >Gestione Amministrazione</h2>
 						<p> Gestione utenze giocatori</p>
 						<p>
-							<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareFindUsersServlet" role="button"> 
+							<a class="btn btn-secondary" href="${pageContext.request.contextPath}/user/PrepareFindUsersServlet" role="button"> 
 							Gestisci &raquo;</a>
 						</p>
 					</div>
