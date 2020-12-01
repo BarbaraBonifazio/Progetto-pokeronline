@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/PrepareGestioneTavolo")
+@WebServlet("/tavolo/PrepareGestioneTavolo")
 public class PrepareGestioneTavolo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

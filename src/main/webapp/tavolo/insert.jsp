@@ -86,7 +86,7 @@
 			<div class='card-body'>
 				
 				<form method="post"
-					action="${pageContext.request.contextPath}/ExecuteInsertTavoloServlet"
+					action="${pageContext.request.contextPath}/tavolo/ExecuteInsertTavoloServlet"
 					novalidate>
 					
 					<input class="form-control" type="hidden" name="idUser" id="idUserCreatore" 

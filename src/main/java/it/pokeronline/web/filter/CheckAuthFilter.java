@@ -20,8 +20,10 @@ public class CheckAuthFilter implements Filter {
 
 	private static final String HOME_PATH = "";
 	private static final String[] EXCLUDED_URLS = {"/login.jsp","/LoginServlet","/LogoutServlet","/assets/", "/mystyle/",
+			"/PrepareInsertUserByRegistrationServlet", "/ExecuteInsertUserByRegistrationServlet", "/user/registrazione.jsp",
 			"/PrepareInsertUserByRegistrationServlet", "/ExecuteInsertUserByRegistrationServlet"};
-	private static final String[] PROTECTED_URLS = {"/users/"};
+	private static final String[] PROTECTED_URLS_ADMIN = {"/user/"};
+	private static final String[] PROTECTED_URLS_TAVOLO = {"/tavolo/"};
 
 	public CheckAuthFilter() {
 	}
@@ -49,8 +51,15 @@ public class CheckAuthFilter implements Filter {
 				httpResponse.sendRedirect(httpRequest.getContextPath());
 				return;
 			} 
-			//controllo che utente abbia ruolo admin se nel path risulta presente /admin/
+			//controllo che utente abbia ruolo admin se nel path risulta presente /user/
 			if(isPathForOnlyAdministrators(pathAttuale) && !userInSession.isAdmin()) {
+				httpRequest.setAttribute("messaggio", "Non si è autorizzati alla navigazione richiesta");
+				httpRequest.getRequestDispatcher("/home.jsp").forward(httpRequest, httpResponse);
+				return;
+			}
+			
+			//controllo che utente abbia ruolo specialPlayer se nel path risulta presente /tavolo/
+			if(isPathForOnlySpecialPlayers(pathAttuale) && !userInSession.isSpecialPlayer()) {
 				httpRequest.setAttribute("messaggio", "Non si è autorizzati alla navigazione richiesta");
 				httpRequest.getRequestDispatcher("/home.jsp").forward(httpRequest, httpResponse);
 				return;
@@ -75,7 +84,16 @@ public class CheckAuthFilter implements Filter {
 	}
 	
 	private boolean isPathForOnlyAdministrators(String requestPath) {
-		for (String urlPatternItem : PROTECTED_URLS) {
+		for (String urlPatternItem : PROTECTED_URLS_ADMIN) {
+			if (requestPath.contains(urlPatternItem)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean isPathForOnlySpecialPlayers(String requestPath) {
+		for (String urlPatternItem : PROTECTED_URLS_TAVOLO) {
 			if (requestPath.contains(urlPatternItem)) {
 				return true;
 			}

@@ -15,7 +15,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import it.pokeronline.model.user.User;
 import it.pokeronline.service.user.UserService;
 
-@WebServlet("/PrepareSearchTavoliServlet")
+@WebServlet("/tavolo/PrepareSearchTavoliServlet")
 public class PrepareSearchTavoliServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

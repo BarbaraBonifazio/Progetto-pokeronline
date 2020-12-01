@@ -29,7 +29,7 @@
 				<div class='card-body'>
 	
 					<form method="get"
-						action="${pageContext.request.contextPath}/ExecuteDeleteTavoloServlet"
+						action="${pageContext.request.contextPath}/tavolo/ExecuteDeleteTavoloServlet"
 						novalidate="novalidate">
 						
 						<div class="form-row">

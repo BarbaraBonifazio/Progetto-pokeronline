@@ -21,7 +21,7 @@ import it.pokeronline.service.tavolo.TavoloService;
 import it.pokeronline.service.user.UserService;
 
 
-@WebServlet("/ExecuteInsertTavoloServlet")
+@WebServlet("/tavolo/ExecuteInsertTavoloServlet")
 public class ExecuteInsertTavoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

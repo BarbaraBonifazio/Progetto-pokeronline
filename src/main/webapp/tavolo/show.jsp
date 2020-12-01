@@ -51,7 +51,7 @@
 		
 
 			<div class='card-footer'>
-				<a Style="color:green !important" href="${pageContext.request.contextPath}/PrepareSearchTavoliServlet?idUser=${idUserPerSearch}"
+				<a Style="color:green !important" href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${idUserPerSearch}"
 					class='btn btn-outline-secondary' style='width: 90px'> <i
 					class='fa fa-chevron-left'></i> Nuova Ricerca
 				</a>

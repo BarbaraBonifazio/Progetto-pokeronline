@@ -44,7 +44,7 @@ body {
 					<h2>Crea Nuovo Tavolo</h2>
 					<p>Descrizione Funzionalità</p>
 					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareInsertTavoloServlet?idUser=${user.id}" 
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareInsertTavoloServlet?idUser=${user.id}" 
 							role="button" Style="background-color:green; border-color:#327827" >Crea &raquo;</a>
 					</p>
 				</div>
@@ -52,7 +52,7 @@ body {
 					<h2>Ricerca Tavoli Creati</h2>
 					<p>Descrizione Funzionalità</p>
 					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/PrepareSearchTavoliServlet?idUser=${user.id}" 
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${user.id}" 
 							role="button" Style="background-color:green; border-color:#327827">Ricerca &raquo;</a>
 					</p>
 				</div>

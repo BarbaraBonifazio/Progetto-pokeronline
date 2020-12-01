@@ -15,7 +15,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import it.pokeronline.service.tavolo.TavoloService;
 
 
-@WebServlet("/PrepareUpdateTavoloServlet")
+@WebServlet("/tavolo/PrepareUpdateTavoloServlet")
 public class PrepareUpdateTavoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

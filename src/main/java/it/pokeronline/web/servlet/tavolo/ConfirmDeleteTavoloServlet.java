@@ -14,7 +14,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import it.pokeronline.service.tavolo.TavoloService;
 
-@WebServlet("/ConfirmDeleteTavoloServlet")
+@WebServlet("/tavolo/ConfirmDeleteTavoloServlet")
 public class ConfirmDeleteTavoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -47,7 +47,7 @@
 				</a>
 				<hr>
 				<form method="get"
-					action="${pageContext.request.contextPath}/ExecuteFindTavoliServlet"
+					action="${pageContext.request.contextPath}/tavolo/ExecuteFindTavoliServlet"
 					novalidate>
 					
 					<input class="form-control" type="hidden" name="idUtente" id="idUtenteCreatore" 

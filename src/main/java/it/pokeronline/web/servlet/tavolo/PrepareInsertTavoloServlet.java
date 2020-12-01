@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.pokeronline.dto.TavoloDTO;
 
-@WebServlet("/PrepareInsertTavoloServlet")
+@WebServlet("/tavolo/PrepareInsertTavoloServlet")
 public class PrepareInsertTavoloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

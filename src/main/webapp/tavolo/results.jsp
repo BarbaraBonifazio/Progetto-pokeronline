@@ -62,7 +62,7 @@
 			<div class='card-body'>
 			
 				<a Style="color:green !important" class="text-right"
-					href="${pageContext.request.contextPath}/PrepareSearchTavoliServlet?idUser=${user.id}"
+					href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${user.id}"
 					class='btn btn-outline-secondary' style='width: 80px'> <i
 					class='fa fa-chevron-left'></i> Indietro
 				</a>
@@ -93,13 +93,13 @@
 											<!-- BOTTONE VISUALIZZA -->
 									<td><a class="btn  btn-sm btn-outline-secondary" 
 										href="${pageContext.request.contextPath}
-												/FindTavoloServlet?idParamPerDettaglioTavolo=${tavolo.id }&idUser=${user.id}
+												/tavolo/FindTavoloServlet?idParamPerDettaglioTavolo=${tavolo.id }&idUser=${user.id}
 												">Visualizza</a>
 												
 											<!-- BOTTONE MODIFICA -->
 										<a Style="color:green !important; border-color:#327827" class="btn  btn-sm btn-outline-primary"
 										href="${pageContext.request.contextPath}
-														/PrepareUpdateTavoloServlet?idDaInviareAExecuteUpdate=${tavolo.id}&idUser=${user.id}&
+														/tavolo/PrepareUpdateTavoloServlet?idDaInviareAExecuteUpdate=${tavolo.id}&idUser=${user.id}&
 												denominazionePerTornareAllaRicercaEffettuata=${requestScope.titoloPerTornareAllaRicercaEffettuata}&
 												expMinPerTornareAllaRicercaEffettuata=${requestScope.tramaPerTornareAllaRicercaEffettuata}&
 												cifraMinPerTornareAllaRicercaEffettuata=${requestScope.generePerTornareAllaRicercaEffettuata}&
@@ -109,7 +109,7 @@
 											<!-- BOTTONE ELIMINA -->
 										<a class="btn btn-outline-danger btn-sm"
 										href="${pageContext.request.contextPath}
-														/ConfirmDeleteTavoloServlet?idDaInviareAExecuteDelete=${tavolo.id}&idUser=${user.id}&
+														/tavolo/ConfirmDeleteTavoloServlet?idDaInviareAExecuteDelete=${tavolo.id}&idUser=${user.id}&
 												denominazionePerTornareAllaRicercaEffettuata=${requestScope.titoloPerTornareAllaRicercaEffettuata}&
 												expMinPerTornareAllaRicercaEffettuata=${requestScope.tramaPerTornareAllaRicercaEffettuata}&
 												cifraMinPerTornareAllaRicercaEffettuata=${requestScope.generePerTornareAllaRicercaEffettuata}&

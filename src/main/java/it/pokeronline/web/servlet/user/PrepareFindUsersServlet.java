@@ -19,7 +19,7 @@ import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.service.ruolo.RuoloService;
 
 
-@WebServlet("/PrepareFindUsersServlet")
+@WebServlet("/user/PrepareFindUsersServlet")
 public class PrepareFindUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
