@@ -69,18 +69,6 @@
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label>Esperienza Accumulata</label> <input type="number" name="expAcc"
-							id="esperienzaAccumulata" class="form-control"
-							placeholder="Inserire Totale Esperienza da Ricercare" required>
-					</div>
-					
-					<div class="form-group col-md-6">
-						<label>Credito Accumulato</label> <input type="number" step="0.50" name="creditAcc"
-							id="creditoAccumulato" class="form-control"
-							placeholder="Inserire Importo Credito da Ricercare" required>
-					</div>
-					
-					<div class="form-group col-md-6">
 						<label>Data Registrazione</label> <input type="date" name="data"
 							id="dataRegistrazione" class="form-control" required>
 					</div>
@@ -96,9 +84,21 @@
 							</c:forEach>
 						</select>
 					</div>
+					
+					<div class="form-group col-md-6">
+						<label>Ruolo</label> <select id="ruoloUser" name="ruolo"
+							class="form-control">
+							<option value="${stato.EMPTY}">- Seleziona Ruolo -</option>
+							<c:forEach items="${listaRuoli}" var="ruolo">
+								<c:if test="${ruolo != 'EMPTY'}">
+									<option value="${ruolo.codice}">${ruolo.codice}</option>
+								</c:if>
+							</c:forEach>
+						</select>
+					</div>
 
 					<button type="submit" name="submit" value="submit" id="submit"
-						class="btn btn-primary" Style="background-color:green; border-color:#327827">Cerca</button>
+						class="btn btn-primary">Cerca</button>
 
 				</form>
 			

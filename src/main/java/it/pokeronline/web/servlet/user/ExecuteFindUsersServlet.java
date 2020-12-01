@@ -1,12 +1,10 @@
 package it.pokeronline.web.servlet.user;
 
-import java.util.List;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -19,7 +17,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import it.pokeronline.model.tavolo.Tavolo;
 import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
 import it.pokeronline.service.user.UserService;
@@ -54,13 +51,13 @@ public class ExecuteFindUsersServlet extends HttpServlet {
 		
 		try {			
 			 Date dataCheck1 = StringUtils.isNotEmpty(request.getParameter("data"))? 
-									new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data")): null;
+									new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")): null;
 								
 			User user = new User(nomeInput, cognomeInput, usernameInput, expInput, creditoInput, dataCheck1);
 			
 			if(StringUtils.isNotEmpty(request.getParameter("data"))) {
 			 Date dataCheck2 = StringUtils.isNumeric(request.getParameter("data"))? 
-					 			new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data")): null;
+					 			new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")): null;
 			user.setDataRegistrazione(dataCheck2);
 			}
 			

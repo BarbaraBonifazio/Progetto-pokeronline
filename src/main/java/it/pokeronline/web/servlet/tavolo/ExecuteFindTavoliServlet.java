@@ -45,22 +45,15 @@ public class ExecuteFindTavoliServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String denominazioneInput = StringUtils.isNotEmpty(request.getParameter("denominazione"))? request.getParameter("denominazione"):null;
-		Long expMinInput = StringUtils.isNumeric(request.getParameter("expMin"))? Long.parseLong(request.getParameter("expMin")):null;
 		Double cifraMinInput = StringUtils.isNumeric(request.getParameter("cifraMin"))? Double.parseDouble(request.getParameter("cifraMin")):null;
 		Long userInput = StringUtils.isNumeric(request.getParameter("idUtente"))? Long.parseLong(request.getParameter("idUtente")):null;
-		
+
 		try {
 			Date dateInput = StringUtils.isNotEmpty(request.getParameter("data"))? 
-								new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data")): null;
+								new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")): null;
 								
-			Tavolo tavolo = new Tavolo(expMinInput, cifraMinInput, denominazioneInput, dateInput);
-			
-			if(StringUtils.isNotEmpty(request.getParameter("data"))) {
-			 Date data = StringUtils.isNumeric(request.getParameter("data"))? 
-					 			new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data")): null;
-			tavolo.setDataCreazione(data);
-			}
-			 
+			Tavolo tavolo = new Tavolo(cifraMinInput, denominazioneInput, dateInput);
+
 			 User userDaDb = userService.caricaSingoloUser(userInput);
 			 tavolo.setUser(userDaDb);
 			 request.setAttribute("listaTavoli", tavoloService.findByExample(tavolo));

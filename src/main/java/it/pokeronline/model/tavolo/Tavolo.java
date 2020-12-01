@@ -1,7 +1,6 @@
 package it.pokeronline.model.tavolo;
 
 import java.util.Date;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,7 +28,7 @@ public class Tavolo {
 	private String denominazione;
 
 	@Temporal(TemporalType.DATE)
-	private Date dataCreazione = new Date();
+	private Date dataCreazione;
 	//
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false)
@@ -39,6 +38,13 @@ public class Tavolo {
 	private Set<User> users = new HashSet<>();
 
 	public Tavolo() {
+	}
+	
+	public Tavolo(Double cifraMin, String denominazione, Date dataCreazione) {
+		super();
+		this.cifraMin = cifraMin;
+		this.denominazione = denominazione;
+		this.dataCreazione = dataCreazione;
 	}
 	
 	public Tavolo(Long expMin, Double cifraMin, String denominazione, Date dataCreazione) {

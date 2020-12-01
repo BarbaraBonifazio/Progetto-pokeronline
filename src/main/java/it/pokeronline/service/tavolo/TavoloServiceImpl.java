@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,21 +67,33 @@ public class TavoloServiceImpl implements TavoloService {
 	}
 
 	@Override
-	public List<Tavolo> findByExample(Tavolo example) {
-		String query = "select t from Tavolo t where t.id = t.id";
+	public List<Tavolo> findByExample(Tavolo tavolo) {
+		
+		String query1 = "select t from Tavolo t where t.id = t.id ";
+		if (tavolo.getDenominazione() != null) {
+			query1 = query1 + " AND t.denominazione like :denominazione ";
+		}
+		if (tavolo.getCifraMin() != null) {
+			query1 = query1 + " AND t.cifraMin = :cifraMin ";
+		}
+		if (tavolo.getDataCreazione() != null) {
+			query1 = query1 + " AND t.dataCreazione = :dataCreazione";
+		}
 
-		if (StringUtils.isNotEmpty(example.getDenominazione()))
-			query += " and t.denominazione like '%" + example.getDenominazione() + "%' ";
-		if (example.getCifraMin() != null)
-			query += " and t.cifraMin = " + example.getCifraMin();
-		if (example.getExpMin() != null)
-			query += " and t.expMin = " + example.getExpMin();
-		if (example.getDataCreazione() != null)
-			query += " and t.dataCreazione = " + example.getDataCreazione();
-		if(example.getUser() != null)
-			query += " and t.user = " + example.getUser().getId();
-
-		return entityManager.createQuery(query, Tavolo.class).getResultList();
+		TypedQuery<Tavolo> query2 = entityManager.createQuery(query1, Tavolo.class);
+		if (tavolo.getDenominazione() != null) {
+			query2.setParameter("denominazione", '%' + tavolo.getDenominazione() + '%');
+		}
+		if (tavolo.getCifraMin() != null) {
+			query2.setParameter("cifraMin", tavolo.getCifraMin());
+		}
+		if (tavolo.getDataCreazione() != null) {
+			query2.setParameter("dataCreazione", tavolo.getDataCreazione());
+		}
+		if(tavolo.equals(null)) {
+			this.listAllTavoli().toString();
+		}
+		return query2.getResultList();
 	}
 
 }

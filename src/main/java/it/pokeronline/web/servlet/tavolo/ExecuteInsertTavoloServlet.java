@@ -1,6 +1,7 @@
 package it.pokeronline.web.servlet.tavolo;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -50,7 +51,6 @@ public class ExecuteInsertTavoloServlet extends HttpServlet {
 		String cifraMinInput = request.getParameter("cifraMin");
 		String denominazioneInput = request.getParameter("denominazione");
 		String idUserInput = request.getParameter("idUser");
-
 		TavoloDTO tavoloDTO = new TavoloDTO(expMinInput, cifraMinInput, denominazioneInput);
 		
 		//effettuo la validazione dell'input e se non va bene rimando in pagina
@@ -66,6 +66,8 @@ public class ExecuteInsertTavoloServlet extends HttpServlet {
 		// se arrivo qui significa che va bene
 		Tavolo tavoloInstance = TavoloDTO.buildModelFromDto(tavoloDTO);
 		User userDaDB = userService.caricaSingoloUser(Long.parseLong(idUserInput));
+		Date data = new Date();
+		tavoloInstance.setDataCreazione(data);
 		tavoloInstance.setUser(userDaDB);
 
 		request.setAttribute("userAttribute", idUserInput);

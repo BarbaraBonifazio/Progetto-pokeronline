@@ -38,7 +38,7 @@ public class PrepareFindUsersServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-			request.setAttribute("listRuoliAttribute", ruoloService.listAllRuoli());
+			request.setAttribute("listaRuoli", ruoloService.listAllRuoli());
 			//lista di enum per lo stato dell'utente 
 			List<String> listaStati = Stream.of(StatoUser.values()).map(Enum::name).collect(Collectors.toList());
 			request.setAttribute("listaStati", listaStati);
