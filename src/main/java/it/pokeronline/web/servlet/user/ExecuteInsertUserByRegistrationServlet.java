@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import it.pokeronline.dto.UserDTO;
+import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
 import it.pokeronline.service.user.UserService;
 
@@ -59,6 +60,7 @@ public class ExecuteInsertUserByRegistrationServlet extends HttpServlet {
 	
 		//se arrivo qui significa che va bene
 		User userInstance = UserDTO.buildModelFromDto(userDTO);
+		userInstance.setStato(StatoUser.CREATO);
 		userInstance.setExpAccumulata(0L);
 		userInstance.setCreditoAccumulato(0);
 //		Date date = new Date();  

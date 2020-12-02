@@ -1,6 +1,9 @@
 package it.pokeronline.dto;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -17,10 +20,18 @@ public class UserDTO {
 	private String password;
 	private String expAccumulata;
 	private String creditoAccumulato;
+	private String dataRegistrazione;
 
 	public UserDTO() {
 	}
 
+	public UserDTO(String nome, String cognome, String username, String dataRegistrazione, boolean search) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.dataRegistrazione = dataRegistrazione;
+	}
+	
 	public UserDTO(String nome, String cognome, String username, String password) {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -93,6 +104,14 @@ public class UserDTO {
 	public void setCreditoAccumulato(String creditoAccumulato) {
 		this.creditoAccumulato = creditoAccumulato;
 	}
+	
+	public String getDataRegistrazione() {
+		return dataRegistrazione;
+	}
+
+	public void setDataRegistrazione(String dataRegistrazione) {
+		this.dataRegistrazione = dataRegistrazione;
+	}
 
 	public List<String> errors() {
 		List<String> result = new ArrayList<String>();
@@ -110,6 +129,17 @@ public class UserDTO {
 			result.add("Il campo Credito Accumulato dev'essere valorizzato con un numero decimale");
 		return result;
 	}
+	
+	public List<String> errorsSearch() {
+		List<String> result = new ArrayList<String>();
+	
+		if (this.dataRegistrazione != null && !this.dataRegistrazione.isEmpty()) {
+			if (!Util.isDate(this.dataRegistrazione)) {
+				result.add("Il campo Data non è valido");
+			}
+		}
+		return result;
+	}
 
 	public static User buildModelFromDto(UserDTO userDTO) {
 		User result = new User();
@@ -118,8 +148,36 @@ public class UserDTO {
 		result.setCognome(userDTO.getCognome());
 		result.setUsername(userDTO.getUsername());
 		result.setPassword(userDTO.getPassword());
-		result.setExpAccumulata(Long.parseLong(userDTO.getExpAccumulata()));
-		result.setCreditoAccumulato(Integer.parseInt(userDTO.getCreditoAccumulato()));
+		
+		//verifico che l'esperienza sia stata valorizzata e passata al DTO per fare il parse, altrimenti setto a null
+		Long expAcc = null;
+		if(userDTO.getExpAccumulata() != null && !"".equals(userDTO.getExpAccumulata())) {
+			expAcc = Long.parseLong(userDTO.getExpAccumulata());
+		}
+		
+		result.setExpAccumulata(expAcc);
+		
+		//verifico che il Credito Accumulato sia stato valorizzato e passato al DTO per fare il parse, altrimenti setto a null
+		Integer creditAcc = null;
+		if(userDTO.getCreditoAccumulato() != null && !"".equals(userDTO.getCreditoAccumulato())) {
+			creditAcc = Integer.parseInt(userDTO.getCreditoAccumulato());
+		}
+	
+		result.setCreditoAccumulato(creditAcc);
+		
+		try {
+			//verifico che la data sia stata valorizzata e passata al DTO per fare il parse, altrimenti setto a null
+			Date data = null;
+			if(userDTO.getDataRegistrazione() != null && !"".equals(userDTO.getDataRegistrazione())) {	
+			data = new SimpleDateFormat("yyyy-MM-dd").parse(userDTO.getDataRegistrazione());
+			}
+			
+		result.setDataRegistrazione(data);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 

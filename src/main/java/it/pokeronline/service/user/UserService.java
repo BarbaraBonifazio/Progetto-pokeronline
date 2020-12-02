@@ -16,7 +16,7 @@ public interface UserService {
 
 	public void rimuovi(User userInstance);
 	
-	public List<User> findByExample(User example);
+	public List<User> findByExample(User user);
 	
 	public User eseguiAccesso(String username, String password);
 	

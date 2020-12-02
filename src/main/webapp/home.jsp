@@ -6,7 +6,7 @@
 <jsp:include page="header.jsp" />
 
 <!-- Custom styles for this template -->
-<link href="./assets/css/global.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/global.css" rel="stylesheet">
 
 <style type="text/css">
 body {

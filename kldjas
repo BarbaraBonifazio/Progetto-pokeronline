@@ -1,0 +1,53 @@
+[33mcommit 36564dc17598dd3d72c85f5ea2d60810926fcb7d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Tue Dec 1 16:54:26 2020 +0100
+
+    aggiustato filtro per admin in gestione tavolo
+
+[33mcommit 6fe24ec541acaa0c57b05e4434f256eda6f3f108[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Tue Dec 1 16:39:54 2020 +0100
+
+    Aggiunti controlli DTO a Search Tavoli + Modifica dataType da Double a Int per la Puntata Minima
+
+[33mcommit a5db6928af6251995a7a5a7870d1b9295f8d20aa[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Tue Dec 1 13:17:46 2020 +0100
+
+    inserite jsp e servlet nel filtro per gestione autorizzazioni in base al ruolo
+
+[33mcommit c987e414eaeddf81260b4a6fabb41888abf0ac09[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Tue Dec 1 12:10:22 2020 +0100
+
+    riscritto findByExample di tavolo
+
+[33mcommit d88b0f8bd36ae21721e1ce7c8d8d30d162d76194[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Mon Nov 30 21:27:29 2020 +0100
+
+    iniziato FindByExample di User
+
+[33mcommit 8050fc72942cab24fe41ce91830e85f0c9013de1[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Mon Nov 30 20:28:46 2020 +0100
+
+    sistemato service tavolo per la query FindByExample + css vari
+
+[33mcommit 57df2c6fa535b554471c315bcb863a80710baa6b[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Mon Nov 30 15:56:14 2020 +0100
+
+    Delete + Update Tavolo completati
+
+[33mcommit deab35e7841bebc8e43972274a9f25f0f08510ac[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Mon Nov 30 12:29:28 2020 +0100
+
+    Insert Tavolo + Visualizza Tavolo completati
+
+[33mcommit 3278c2085d9e80d430eaef4b0f44039da3b5c9dd[m
+Author: Barbara <barbara.bonifazio@gmail.com>
+Date:   Sun Nov 29 23:11:02 2020 +0100
+
+    pokeronline

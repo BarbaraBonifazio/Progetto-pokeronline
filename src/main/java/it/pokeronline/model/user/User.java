@@ -40,7 +40,7 @@ import it.pokeronline.model.tavolo.Tavolo;
 		private Date dataRegistrazione = new Date();
 
 		@Enumerated(EnumType.STRING)
-		private StatoUser stato = StatoUser.CREATO;
+		private StatoUser stato;
 
 		@ManyToMany
 		@JoinTable(name = "utente_ruolo", joinColumns = @JoinColumn(name = "utente_id", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ruolo_id", referencedColumnName = "ID"))
@@ -63,6 +63,13 @@ import it.pokeronline.model.tavolo.Tavolo;
 			this.username = username;
 			this.expAccumulata = expAccumulata;
 			this.creditoAccumulato = creditoAccumulato;
+			this.dataRegistrazione = dataRegistrazione;
+		}
+		
+		public User(String nome, String cognome, String username, Date dataRegistrazione) {
+			this.nome = nome;
+			this.cognome = cognome;
+			this.username = username;
 			this.dataRegistrazione = dataRegistrazione;
 		}
 		

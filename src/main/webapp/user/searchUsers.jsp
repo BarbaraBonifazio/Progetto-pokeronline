@@ -7,7 +7,7 @@
 <title>Cerca Utenti</title>
 
 <!-- style per le pagine diverse dalla index -->
-<link href="${pageContext.request.contextPath}/assets/css/global.css" rel="stylesheet">
+<link href="../assets/css/global.css" rel="stylesheet">
 
 </head>
 <body>
@@ -33,6 +33,14 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
+		
+		<div class="alert alert-danger ${not empty userErrors?'':'d-none' }" role="alert">
+		<c:forEach var = "errorItem" items="${userErrors }">
+        	<ul>
+				<li> ${errorItem }</li>	
+			</ul>
+      	</c:forEach>
+		</div>
 
 		<div class='card'>
 			<div class='card-header'>
@@ -47,38 +55,38 @@
 				</a>
 				<hr>
 				<form method="get"
-					action="${pageContext.request.contextPath}/ExecuteFindUsersServlet"
+					action="${pageContext.request.contextPath}/user/ExecuteFindUsersServlet"
 					novalidate>
 
 					<div class="form-group col-md-6">
 						<label>Nome</label> <input type="text" name="nome" id="nomeUser"
 							class="form-control"
-							placeholder="Inserire almeno i primi tre caratteri">
+							placeholder="Inserire almeno i primi tre caratteri" value="${userAttribute.nome }">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label>Cognome</label> <input type="text" name="cognome"
 							id="cognomeUser" class="form-control"
-							placeholder="Inserire almeno i primi tre caratteri">
+							placeholder="Inserire almeno i primi tre caratteri" value="${userAttribute.cognome }">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label>Username</label> <input type="text" name="username"
 							id="unameUser" class="form-control"
-							placeholder="Inserire username">
+							placeholder="Inserire almeno i primi tre caratteri" value="${userAttribute.username }">
 					</div>
 					
 					<div class="form-group col-md-6">
 						<label>Data Registrazione</label> <input type="date" name="data"
-							id="dataRegistrazione" class="form-control" required>
+							id="dataRegistrazione" class="form-control" value="${userAttribute.dataRegistrazione }">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label>Stato</label> <select id="statoUser" name="stato"
 							class="form-control">
-							<option value="${stato.EMPTY}">- Seleziona Stato -</option>
+							<option value="${null}">- Seleziona Stato -</option>
 							<c:forEach items="${listaStati}" var="stato">
-								<c:if test="${stato != 'EMPTY'}">
+								<c:if test="${stato != 'null'}">
 									<option value="${stato}">${stato}</option>
 								</c:if>
 							</c:forEach>
@@ -86,12 +94,12 @@
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label>Ruolo</label> <select id="ruoloUser" name="ruolo"
+						<label>Ruolo</label> <select id="ruoloUser" name="idRuolo"
 							class="form-control">
-							<option value="${stato.EMPTY}">- Seleziona Ruolo -</option>
+							<option value="${null}">- Seleziona Ruolo -</option>
 							<c:forEach items="${listaRuoli}" var="ruolo">
-								<c:if test="${ruolo != 'EMPTY'}">
-									<option value="${ruolo.codice}">${ruolo.codice}</option>
+								<c:if test="${ruolo != 'null'}">
+									<option value="${ruolo.id}">${ruolo.codice}</option>
 								</c:if>
 							</c:forEach>
 						</select>

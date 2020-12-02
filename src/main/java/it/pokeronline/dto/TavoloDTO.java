@@ -103,7 +103,7 @@ public class TavoloDTO {
 				result.add("Il campo Puntata Minima non dev'essere negativo");
 			 }
 		}
-		if (this.dataCreazione != null && !this.cifraMin.isEmpty()) {
+		if (this.dataCreazione != null && !this.dataCreazione.isEmpty()) {
 			if (!Util.isDate(this.dataCreazione)) {
 				result.add("Il campo Data non è valido");
 			}
@@ -113,7 +113,6 @@ public class TavoloDTO {
 
 	public static Tavolo buildModelFromDto(TavoloDTO tavoloDTO) {
 		Tavolo result = new Tavolo();
-		result.setId(tavoloDTO.getId());
 		
 		//verifico che l'esperienza sia stata valorizzata e passata al DTO per fare il parse, altrimenti setto a null
 			Long expMin = null;
@@ -130,19 +129,22 @@ public class TavoloDTO {
 			}
 		
 		result.setCifraMin(cifraMin);
-		result.setDenominazione(tavoloDTO.getDenominazione());
+		
 		try {
 			//verifico che la data sia stata valorizzata e passata al DTO per fare il parse, altrimenti setto a null
 			Date data = null;
 			if(tavoloDTO.getDataCreazione() != null && !"".equals(tavoloDTO.getDataCreazione())) {	
 			data = new SimpleDateFormat("yyyy-MM-dd").parse(tavoloDTO.getDataCreazione());
 			}
-			result.setDataCreazione(data);
+			
+		result.setDataCreazione(data);
 			
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
+		result.setId(tavoloDTO.getId());
+		result.setDenominazione(tavoloDTO.getDenominazione());
 		return result;
 	}
 }

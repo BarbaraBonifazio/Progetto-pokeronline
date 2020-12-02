@@ -7,7 +7,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,19 +52,51 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findByExample(User example) {
-		String query = "select u from User u where u.id = u.id ";
+	public List<User> findByExample(User user) {
+					
+		String query1 = "FROM User u JOIN FETCH u.ruoli r where u.id = u.id ";
+		if (user.getNome() != null && !user.getNome().isEmpty()) {
+			query1 = query1 + " AND u.nome like :nome ";
+		}
+		if (user.getCognome() != null && !user.getCognome().isEmpty()) {
+			query1 = query1 + " AND u.cognome like :cognome ";
+		}
+		if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+			query1 = query1 + " AND u.username like :username ";
+		}
+		if (user.getDataRegistrazione() != null) {
+			query1 = query1 + " AND u.dataRegistrazione = :dataRegistrazione ";
+		}
+		if (user.getStato() != null) {
+			query1 = query1 + " AND u.stato = :stato ";
+		}
+		if (user.getRuoli() != null && !user.getRuoli().isEmpty()) {
+			query1 = query1 + " AND r in (:ruoli)";
+		}
 
-		if (StringUtils.isNotEmpty(example.getNome()))
-			query += " and u.nome like '%" + example.getNome() + "%' ";
-		if (StringUtils.isNotEmpty(example.getCognome()))
-			query += " and u.cognome like '%" + example.getCognome() + "%' ";
-		if (StringUtils.isNotEmpty(example.getUsername()))
-			query += " and u.username like '%" + example.getUsername() + "%' ";
-		if (example.getStato() != null)
-			query += " and u.stato = " + example.getStato();
-
-		return entityManager.createQuery(query, User.class).getResultList();
+		TypedQuery<User> query2 = entityManager.createQuery(query1, User.class);
+		if (user.getNome() != null && !user.getNome().isEmpty()) {
+			query2.setParameter("nome", '%' + user.getNome() + '%');
+		}
+		if (user.getCognome() != null && !user.getCognome().isEmpty()) {
+			query2.setParameter("cognome", '%' + user.getCognome() + '%');
+		}
+		if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+			query2.setParameter("username", '%' + user.getUsername() + '%');
+		}
+		if (user.getDataRegistrazione() != null) {
+			query2.setParameter("dataRegistrazione", user.getDataRegistrazione());
+		}
+		if (user.getStato() != null) {
+			query2.setParameter("stato", user.getStato());
+		}
+		if (user.getRuoli() != null && !user.getRuoli().isEmpty()) {
+			query2.setParameter("ruoli", user.getRuoli());
+		}
+		if(user.equals(null)) {
+			this.listAllUsers().toString();
+		}
+		return query2.getResultList();
 	}
 
 	@Override

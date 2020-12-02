@@ -1,9 +1,6 @@
 package it.pokeronline.web.servlet.user;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -13,12 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import it.pokeronline.dto.UserDTO;
+import it.pokeronline.model.ruolo.Ruolo;
 import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
+import it.pokeronline.service.ruolo.RuoloService;
 import it.pokeronline.service.user.UserService;
 
 
@@ -28,6 +27,9 @@ public class ExecuteFindUsersServlet extends HttpServlet {
        
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private RuoloService ruoloService;
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -40,41 +42,43 @@ public class ExecuteFindUsersServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		String nomeInput = request.getParameter("nome");
+		String cognomeInput = request.getParameter("cognome");
+		String usernameInput = request.getParameter("username");
+		String dataInput = request.getParameter("data");
 		String statoInput = request.getParameter("stato");
+		String ruoloInput = request.getParameter("idRuolo");
 		
-		String nomeInput = StringUtils.isNotEmpty(request.getParameter("nome"))? request.getParameter("nome"):null;
-		String cognomeInput = StringUtils.isNotEmpty(request.getParameter("cognome"))? request.getParameter("cognome"):null;
-		String usernameInput = StringUtils.isNotEmpty(request.getParameter("username"))? request.getParameter("username"):null;
-		Long expInput = StringUtils.isNumeric(request.getParameter("expAcc"))? Long.parseLong(request.getParameter("expAcc")):null;
-		Integer creditoInput = StringUtils.isNumeric(request.getParameter("creditAcc"))? Integer.parseInt(request.getParameter("creditAcc")):null;
-		
-		try {			
-			 Date dataCheck1 = StringUtils.isNotEmpty(request.getParameter("data"))? 
-									new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")): null;
-								
-			User user = new User(nomeInput, cognomeInput, usernameInput, expInput, creditoInput, dataCheck1);
+		boolean search = true;
+		UserDTO userDTO = new UserDTO(nomeInput, cognomeInput, usernameInput, dataInput, search);
 			
-			if(StringUtils.isNotEmpty(request.getParameter("data"))) {
-			 Date dataCheck2 = StringUtils.isNumeric(request.getParameter("data"))? 
-					 			new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")): null;
-			user.setDataRegistrazione(dataCheck2);
+			//effettuo la validazione dell'input e se non va bene rimando in pagina
+			List<String> userErrors = userDTO.errorsSearch();
+			if (!userErrors.isEmpty()) {
+				request.setAttribute("userAttribute", userDTO);
+				request.setAttribute("userErrors", userErrors);
+				request.getRequestDispatcher("/user/searchUsers.jsp").forward(request, response);
+				return;
+			}
+
+		// se arrivo qui significa che va bene
+			User userInstance = UserDTO.buildModelFromDto(userDTO);
+			
+			if (statoInput != null && !statoInput.isEmpty()) {
+				userInstance.setStato(StatoUser.valueOf(statoInput));
+			}
+			if (ruoloInput != null && !ruoloInput.isEmpty()) {
+				Ruolo ruoloDaDb = ruoloService.caricaSingoloRuolo(Long.parseLong(ruoloInput));
+				userInstance.getRuoli().add(ruoloDaDb);
 			}
 			
-				if (!statoInput.isEmpty() && statoInput != null) {
-					user.setStato(StatoUser.valueOf(statoInput));
-				}
+			List<User> listaUtenti = userService.findByExample(userInstance);
 			
-			List<User> listaUtenti = userService.findByExample(user);
-			
-			request.setAttribute("utentiPerResultsList", listaUtenti);
+			request.setAttribute("usersPerResults", listaUtenti);
 
 		// andiamo ai risultati
-		request.getRequestDispatcher("resultsListUtenti.jsp").forward(request, response);
-		
-			} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		request.getRequestDispatcher("/user/results.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
