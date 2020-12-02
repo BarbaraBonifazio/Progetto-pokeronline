@@ -22,7 +22,9 @@ public interface UserService {
 	
 	public User eseguiRegistrazione(String username, String password);
 
-	public User findByRuoli(String username, String password);
-	
-	
+	public User checkRuoli(String username, String password);
+
+	public User findUserWithRuoli(Long id);
+
+	public List <User> listAllUsersWithRuoli();
 }

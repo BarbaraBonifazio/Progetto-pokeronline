@@ -67,33 +67,33 @@
 						<tbody>
 
 							<c:forEach items="${requestScope.usersPerResults}"
-								var="user">
+								var="userResult">
 								<tr>
 									
-									<td>${user.nome}</td>
-									<td>${user.cognome}</td>
-									<td>${user.username}</td>
-									<td>${user.dataRegistrazione}</td>
-									<td>${user.stato}</td>
-									<td>${user.ruoli}</td>
+									<td>${userResult.nome}</td>
+									<td>${userResult.cognome}</td>
+									<td>${userResult.username}</td>
+									<td>${userResult.dataRegistrazione}</td>
+									<td>${userResult.stato}</td>
+									<td>${userResult.ruoli}</td>
 
 												<!-- BOTTONE VISUALIZZA -->
 									<td><a class="btn  btn-sm btn-outline-secondary"
 										href="${pageContext.request.contextPath}
-												/user/FindUserServlet?idParamPerDettaglioUser=${user.id}
+												/user/FindUserServlet?idParamPerDettaglioUser=${userResult.id}
 												">Visualizza</a>
 										
 											<!-- BOTTONE MODIFICA -->
-										<a class="btn  btn-sm btn-outline-primary"
+										<a Style="color:green !important; border-color:#327827" class="btn  btn-sm btn-outline-primary"
 											href="${pageContext.request.contextPath}
-												/user/PrepareUpdateUserServlet?idDaInviareAExecuteUpdate=${user.id}
+												/user/PrepareUpdateUserServlet?idDaInviareAExecuteUpdate=${userResult.id}
 												">Modifica</a>
-											
+										<br>	
 											<!-- BOTTONE ELIMINA -->
 										<a class="btn btn-outline-danger btn-sm"
 											href="${pageContext.request.contextPath}
-												/user/ConfirmDeleteUtenteServlet?idDaInviareAExecuteDelete=${user.id}
-												">Elimina</a>
+												/user/ConfirmDeleteUtenteServlet?idDaInviareAExecuteDelete=${userResult.id}
+												">Attiva/Disattiva</a>
 									</td>
 	
 							</tr> <!-- END TABELLA -->

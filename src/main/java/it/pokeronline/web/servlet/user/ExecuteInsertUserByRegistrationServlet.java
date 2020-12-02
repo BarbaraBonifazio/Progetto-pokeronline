@@ -1,6 +1,7 @@
 package it.pokeronline.web.servlet.user;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -46,7 +47,7 @@ public class ExecuteInsertUserByRegistrationServlet extends HttpServlet {
 		String expInput = request.getParameter("exp");
 		String creditoInput = request.getParameter("credito");
 		expInput = expInput.isEmpty() ? Long.toString(0) : expInput;
-		creditoInput = creditoInput.isEmpty() ? Double.toString(0.0) : creditoInput;
+		creditoInput = creditoInput.isEmpty() ? Integer.toString(0) : creditoInput;
 		UserDTO userDTO = new UserDTO(nomeInput, cognomeInput, usernameInput, passwordInput, expInput, creditoInput);
 		
 		// effettuo la validazione dell'input e se non va bene rimando in pagina
@@ -63,8 +64,8 @@ public class ExecuteInsertUserByRegistrationServlet extends HttpServlet {
 		userInstance.setStato(StatoUser.CREATO);
 		userInstance.setExpAccumulata(0L);
 		userInstance.setCreditoAccumulato(0);
-//		Date date = new Date();  
-//		userInstance.setDataRegistrazione(date);	
+		Date date = new Date();  
+		userInstance.setDataRegistrazione(date);	
 		userService.inserisciNuovo(userInstance);
 				
 		//vado in pagina con ok

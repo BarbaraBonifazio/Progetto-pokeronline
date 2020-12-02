@@ -33,5 +33,6 @@ public class RuoloServiceImpl implements RuoloService{
 	public Ruolo caricaSingoloRuolo(Long id) {
 		return ruoloRepository.findById(id).orElse(null);
 	}
-
+	
+	
 }

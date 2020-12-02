@@ -1,5 +1,8 @@
 package it.pokeronline.repository.user;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import it.pokeronline.model.user.StatoUser;
@@ -11,6 +14,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
 	User findByUsernameAndPassword(String username, String password);
 	
-	
+	@Query("Select Distinct u From User u LEFT JOIN FETCH u.ruoli r")
+	List <User> listAllUsersWithRuoli();
 
 }

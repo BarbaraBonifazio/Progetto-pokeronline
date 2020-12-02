@@ -4,10 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
+import it.pokeronline.model.ruolo.Ruolo;
+import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
 import it.pokeronline.util.Util;
 
@@ -21,10 +25,19 @@ public class UserDTO {
 	private String expAccumulata;
 	private String creditoAccumulato;
 	private String dataRegistrazione;
-
+	private List<String> ruoli;
+	private StatoUser stato;
+	
 	public UserDTO() {
 	}
 
+	public UserDTO(String nome, String cognome, String username, List<String> ruoli) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.ruoli = ruoli;
+	}
+	
 	public UserDTO(String nome, String cognome, String username, String dataRegistrazione, boolean search) {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -113,6 +126,22 @@ public class UserDTO {
 		this.dataRegistrazione = dataRegistrazione;
 	}
 
+	public List<String> getRuoli() {
+		return ruoli;
+	}
+
+	public void setRuoli(List<String> ruoli) {
+		this.ruoli = ruoli;
+	}
+	
+	public StatoUser getStato() {
+		return stato;
+	}
+
+	public void setStato(StatoUser stato) {
+		this.stato = stato;
+	}
+
 	public List<String> errors() {
 		List<String> result = new ArrayList<String>();
 		if (StringUtils.isBlank(this.nome))
@@ -125,7 +154,7 @@ public class UserDTO {
 			result.add("Il campo Password non può essere vuoto");
 		if (StringUtils.isBlank(this.expAccumulata) || !Util.isLong(this.expAccumulata))
 			result.add("Il campo Esperienza Accumulata dev'essere valorizzato con un numero");
-		if (StringUtils.isBlank(this.creditoAccumulato) || !Util.isDouble(this.creditoAccumulato))
+		if (StringUtils.isBlank(this.creditoAccumulato) || !Util.isInteger(this.creditoAccumulato))
 			result.add("Il campo Credito Accumulato dev'essere valorizzato con un numero decimale");
 		return result;
 	}
@@ -138,6 +167,22 @@ public class UserDTO {
 				result.add("Il campo Data non è valido");
 			}
 		}
+		return result;
+	}
+	
+	public List<String> errorsUpdate() {
+		List<String> result = new ArrayList<String>();
+		if (StringUtils.isBlank(this.nome))
+			result.add("Il campo Nome non può essere vuoto");
+		if (StringUtils.isBlank(this.cognome))
+			result.add("Il campo Cognome non può essere vuoto");
+		if (StringUtils.isBlank(this.username))
+			result.add("Il campo Username non può essere vuoto");
+		if(this.ruoli == null || this.ruoli.size() == 0) {
+			result.add("Non risulta selezionato alcun ruolo!");
+//			ruoli = new String[0];
+		}
+		
 		return result;
 	}
 
@@ -177,6 +222,20 @@ public class UserDTO {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
+		//verifico che sia stato valorizzato almeno un ruolo, altrimenti setto a null
+		Set<Ruolo> listaRuoli = new HashSet<>(0);
+
+		if(userDTO.getRuoli() != null && userDTO.getRuoli().size() != 0) {
+			for(String r:userDTO.getRuoli()){
+				Long idRuolo = Long.parseLong(r);
+				Ruolo ruoloNew = new Ruolo();
+				ruoloNew.setId(idRuolo);
+				listaRuoli.add((Ruolo)ruoloNew);
+			}
+			result.setRuoli(listaRuoli);
+		}
+		
 		
 		return result;
 	}

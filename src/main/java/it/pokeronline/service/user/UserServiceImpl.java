@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> findByExample(User user) {
 					
-		String query1 = "FROM User u JOIN FETCH u.ruoli r where u.id = u.id ";
+		String query1 = "SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.ruoli r where u.id = u.id ";
 		if (user.getNome() != null && !user.getNome().isEmpty()) {
 			query1 = query1 + " AND u.nome like :nome ";
 		}
@@ -110,7 +110,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public User findByRuoli(String username, String password) {
+	public User checkRuoli(String username, String password) {
 		TypedQuery<User> query = entityManager.createQuery("select u from User u JOIN FETCH u.ruoli where u.username = ?1 and u.password = ?2", User.class);
 		query.setParameter(1, username);
 		query.setParameter(2, password);
@@ -119,6 +119,22 @@ public class UserServiceImpl implements UserService {
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
+	
+	@Override
+	public User findUserWithRuoli(Long id) {
+		TypedQuery<User> query = entityManager.createQuery("select u from User u LEFT JOIN FETCH u.ruoli where u.id = ?1 ", User.class);
+		query.setParameter(1, id);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<User> listAllUsersWithRuoli() {
+		return userRepository.listAllUsersWithRuoli();
 	}
 	
 }
