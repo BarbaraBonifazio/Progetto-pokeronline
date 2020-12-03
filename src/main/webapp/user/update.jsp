@@ -152,7 +152,7 @@
 							</c:if>
 						</c:forEach>
 					</select>
-					<div class="invalid-feedback" id="errorStatus"> Non risulta selezionato alcuno stato!</div>
+					<div class="invalid-feedback" id="errorStato"> Non risulta selezionato alcuno stato!</div>
 				</div>
 				
 				<div class="form-group col md-6">
@@ -168,7 +168,7 @@
 								${ruolo.codice} </label>	
 						</div>	
 					</c:forEach>
-					<div class="invalid-feedback" id="errorRoles"> Non risulta selezionato alcun ruolo!</div>
+					<div class="invalid-feedback" id="errorRuoli"> Non risulta selezionato alcun ruolo!</div>
 				</div>
 				</c:if>
 				

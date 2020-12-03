@@ -25,24 +25,27 @@ public class UserDTO {
 	private String expAccumulata;
 	private String creditoAccumulato;
 	private String dataRegistrazione;
+	private String stato;
 	private List<String> ruoli;
-	private StatoUser stato;
+	
 	
 	public UserDTO() {
 	}
 
-	public UserDTO(String nome, String cognome, String username, List<String> ruoli) {
+	public UserDTO(String nome, String cognome, String username, String stato, List<String> ruoli) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
+		this.stato = stato;
 		this.ruoli = ruoli;
 	}
 	
-	public UserDTO(String nome, String cognome, String username, String dataRegistrazione, boolean search) {
+	public UserDTO(String nome, String cognome, String username, String dataRegistrazione, String stato) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
 		this.dataRegistrazione = dataRegistrazione;
+		this.stato = stato;
 	}
 	
 	public UserDTO(String nome, String cognome, String username, String password) {
@@ -134,11 +137,11 @@ public class UserDTO {
 		this.ruoli = ruoli;
 	}
 	
-	public StatoUser getStato() {
+	public String getStato() {
 		return stato;
 	}
 
-	public void setStato(StatoUser stato) {
+	public void setStato(String stato) {
 		this.stato = stato;
 	}
 
@@ -178,9 +181,10 @@ public class UserDTO {
 			result.add("Il campo Cognome non può essere vuoto");
 		if (StringUtils.isBlank(this.username))
 			result.add("Il campo Username non può essere vuoto");
+		if(this.stato == null || StringUtils.isBlank(this.stato))
+			result.add("Il campo Stato non può essere vuoto");
 		if(this.ruoli == null || this.ruoli.size() == 0) {
 			result.add("Non risulta selezionato alcun ruolo!");
-//			ruoli = new String[0];
 		}
 		
 		return result;
@@ -223,6 +227,12 @@ public class UserDTO {
 			e.printStackTrace();
 		}
 		
+		StatoUser stato = null;
+		if(userDTO.getStato() != null && !"".equals(userDTO.getStato())) {
+		stato = StatoUser.valueOf(userDTO.getStato());
+		}
+		result.setStato(stato);
+		
 		//verifico che sia stato valorizzato almeno un ruolo, altrimenti setto a null
 		Set<Ruolo> listaRuoli = new HashSet<>(0);
 
@@ -235,6 +245,7 @@ public class UserDTO {
 			}
 			result.setRuoli(listaRuoli);
 		}
+		
 		
 		
 		return result;

@@ -15,7 +15,6 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import it.pokeronline.dto.UserDTO;
 import it.pokeronline.model.ruolo.Ruolo;
-import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
 import it.pokeronline.service.ruolo.RuoloService;
 import it.pokeronline.service.user.UserService;
@@ -50,8 +49,7 @@ public class ExecuteFindUsersServlet extends HttpServlet {
 		String statoInput = request.getParameter("stato");
 		String ruoloInput = request.getParameter("idRuolo");
 		
-		boolean search = true;
-		UserDTO userDTO = new UserDTO(nomeInput, cognomeInput, usernameInput, dataInput, search);
+		UserDTO userDTO = new UserDTO(nomeInput, cognomeInput, usernameInput, dataInput, statoInput);
 			
 			//effettuo la validazione dell'input e se non va bene rimando in pagina
 			List<String> userErrors = userDTO.errorsSearch();
@@ -65,9 +63,9 @@ public class ExecuteFindUsersServlet extends HttpServlet {
 		// se arrivo qui significa che va bene
 			User userInstance = UserDTO.buildModelFromDto(userDTO);
 			
-			if (statoInput != null && !statoInput.isEmpty()) {
-				userInstance.setStato(StatoUser.valueOf(statoInput));
-			}
+//			if (statoInput != null && !statoInput.isEmpty()) {
+//				userInstance.setStato(StatoUser.valueOf(statoInput));
+//			}
 			if (ruoloInput != null && !ruoloInput.isEmpty()) {
 				Ruolo ruoloDaDb = ruoloService.caricaSingoloRuolo(Long.parseLong(ruoloInput));
 				userInstance.getRuoli().add(ruoloDaDb);
