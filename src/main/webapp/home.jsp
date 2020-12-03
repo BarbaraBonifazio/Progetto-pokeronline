@@ -46,9 +46,10 @@ body {
 			<div class="row">
 				<div class="col-md-4" Style="padding-top:120px">
 					<h2>Play Management</h2>
-					<p> Gioca! </p>
+					<p> Accedi al gioco! </p>
 					<p>
-						<a class="btn btn-secondary" href="#" role="button">Accedi &raquo;</a>
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PreparePlayManagementServlet" role="button">
+						Accedi &raquo;</a>
 					</p>
 				</div>
 				<c:if test="${!sessionScope.isPlayer eq 'true'}">

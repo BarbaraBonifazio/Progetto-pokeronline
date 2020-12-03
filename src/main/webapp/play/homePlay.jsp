@@ -13,7 +13,7 @@ body {
 }
 </style>
 
-<title>Gestione Tavolo</title>
+<title>Gioca</title>
 </head>
 <body>
 
@@ -34,28 +34,40 @@ body {
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<h2 class="display-5 text-center" >Gestisci i tuoi Tavoli</h2>				
+				<h2 class="display-5 text-center" > Benvenuto nella tua Area di Gioco!</h2>				
 			</div>
 		</div>
 
 		 <div class="container text-center">
 			<div class="row" Style="padding-top:132px">
 				<div class="col-md-6">
-					<h2>Crea Nuovo Tavolo</h2>
+					<h2>Compra Credito</h2>
 					<p>Descrizione Funzionalità</p>
 					<p>
 						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareInsertTavoloServlet?idUser=${user.id}" 
-							role="button" Style="background-color:green; border-color:#327827" >Crea &raquo;</a>
+							role="button" Style="background-color:green; border-color:#327827" >Compra &raquo;</a>
 					</p>
 				</div>
+				<c:if test="${user.isInGioco()}">
 				<div class="col-md-6">
-					<h2>Ricerca Tavoli Creati</h2>
-					<p>Descrizione Funzionalità</p>
+					<h2>Go To Last Game</h2>
+					<p>Hai una partita in corso!</p>
+					<p>
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${user.id}" 
+							role="button" Style="background-color:green; border-color:#327827">Gioca &raquo;</a>
+					</p>
+				</div>
+				</c:if>
+				<c:if test="${user.isInGioco() eq 'false'}">
+				<div class="col-md-6">
+					<h2>Ricerca Partite</h2>
+					<p>Inizia a giocare!</p>
 					<p>
 						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${user.id}" 
 							role="button" Style="background-color:green; border-color:#327827">Ricerca &raquo;</a>
 					</p>
 				</div>
+				</c:if>
 			</div>
 
 			<hr>
