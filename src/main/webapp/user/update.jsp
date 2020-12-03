@@ -24,19 +24,19 @@
 			  	
 			  	var validate = true;
 			  	
-			  	if(!$("#nomeUtente")[0].value) { 
+			  	if(!$("#nomeUser")[0].value) { 
 				  	$("#errorNome").show();
 				  	valida = false;
 			  	}	
-				  	if(!$("#cognomeUtente")[0].value){ 
+				  	if(!$("#cognomeUser")[0].value){ 
 					  	$("#errorCognome").show();
 					  	valida = false;
 					} 	
-						if(!$("#usernameUtente")[0].value){ 
+						if(!$("#usernameUser")[0].value){ 
 						  	$("#errorUsername").show();
 						  	valida = false;
 						} 						  	
-						  	if(!$("#statoUtente")[0].value){ 
+						  	if(!$("#statoUser")[0].value){ 
 							  	$("#errorStato").show();
 							  	valida = false;
 							} 	
@@ -120,7 +120,7 @@
 						type="text" name="nome" id="nomeUser" class="form-control"
 						placeholder="Inserire nome"
 						value="${userAttribute.nome}" required>
-						<div class="invalid-feedback" id="errorName"> Il campo nome risulta vuoto!</div>
+						<div class="invalid-feedback" id="errorNome"> Il campo nome risulta vuoto!</div>
 				</div>
 
 				<div class="form-group col-md-6">
@@ -128,7 +128,7 @@
 						type="text" name="cognome" id="cognomeUser" class="form-control"
 						placeholder="Inserire cognome"
 						value="${userAttribute.cognome}" required>
-						<div class="invalid-feedback" id="errorSurname"> Il campo cognome risulta vuoto!</div>
+						<div class="invalid-feedback" id="errorCognome"> Il campo cognome risulta vuoto!</div>
 				</div>
 			</div>
 
