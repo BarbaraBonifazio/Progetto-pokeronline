@@ -53,7 +53,7 @@ public class ConfirmAttivaDisattivaUserServlet extends HttpServlet {
 			isInGioco = true;
 		}
 		request.setAttribute("isInGioco", isInGioco);
-		request.setAttribute("idUserAttribute", idUser);
+		request.setAttribute("userAttribute", userDaDb);
 		request.getRequestDispatcher("/user/confirmDisattiva.jsp").forward(request, response);
 		}
 	}

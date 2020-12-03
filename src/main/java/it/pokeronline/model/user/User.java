@@ -204,6 +204,14 @@ import it.pokeronline.model.tavolo.Tavolo;
 			return false;
 		}
 		
+		public boolean hasRuoli() {
+			for (Ruolo ruoloItem : ruoli) {
+				if (ruoloItem != null)
+					return true;
+			}
+			return false;
+		}
+		
 		@Override 
 		public boolean equals(Object object) {
 			if(object instanceof User) {	//controllo che l'oggetto passato in input sia un'istanza di Utente prima di poter fare il cast

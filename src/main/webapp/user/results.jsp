@@ -97,10 +97,12 @@
 												">Modifica</a>
 										<br>	
 											<!-- BOTTONE ELIMINA -->
+											<c:if test="${userResult.hasRuoli()}">
 										<a class="btn btn-outline-danger btn-sm"
 											href="${pageContext.request.contextPath}
 												/user/ConfirmAttivaDisattivaUserServlet?idDaInviareAExecuteDisattiva=${userResult.id}
 												">Attiva/Disattiva</a>
+											</c:if>
 									</td>
 	
 							</tr> <!-- END TABELLA -->
