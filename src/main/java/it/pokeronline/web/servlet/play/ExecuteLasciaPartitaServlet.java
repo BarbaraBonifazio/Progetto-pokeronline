@@ -14,7 +14,6 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import it.pokeronline.model.user.User;
 import it.pokeronline.service.user.UserService;
-import it.pokeronline.util.Util;
 
 @WebServlet("/play/ExecuteLasciaPartitaServlet")
 public class ExecuteLasciaPartitaServlet extends HttpServlet {

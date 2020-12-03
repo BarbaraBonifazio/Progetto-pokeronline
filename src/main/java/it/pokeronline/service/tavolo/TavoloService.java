@@ -18,4 +18,6 @@ public interface TavoloService {
 	public List<Tavolo> findByExample(Tavolo example);
 
 	public List<Tavolo> findAllByUser_Id(Long id);
+
+	public Tavolo findTavoloWithUtenti(Long id);
 }

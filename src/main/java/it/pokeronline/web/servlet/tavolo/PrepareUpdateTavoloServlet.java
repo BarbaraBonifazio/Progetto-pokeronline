@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import it.pokeronline.model.tavolo.Tavolo;
 import it.pokeronline.service.tavolo.TavoloService;
 
 
@@ -36,6 +37,13 @@ public class PrepareUpdateTavoloServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idUtenteCreatore = request.getParameter("idUser");
 		String idTavoloInput = request.getParameter("idDaInviareAExecuteUpdate");
+		
+		Tavolo tavoloDaDb = tavoloService.findTavoloWithUtenti(Long.parseLong(idTavoloInput));
+		if(tavoloDaDb.getUsers().size() > 0) {
+			request.setAttribute("errorMessage", "Il tuo tavolo è attualmente occupato da almeno un giocatore, non puoi modificarlo!");
+			request.setAttribute("listaTavoli", tavoloService.listAllTavoli());
+			request.getRequestDispatcher("/tavolo/results.jsp").forward(request, response);
+		}
 		
 		request.setAttribute("idUserPerUpdateTavolo", idUtenteCreatore);
 		request.setAttribute("idTavoloPerUpdate", idTavoloInput);

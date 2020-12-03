@@ -3,6 +3,7 @@ package it.pokeronline.service.tavolo;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.pokeronline.model.tavolo.Tavolo;
+import it.pokeronline.model.user.User;
 import it.pokeronline.repository.tavolo.TavoloRepository;
 
 @Component
@@ -106,6 +108,17 @@ public class TavoloServiceImpl implements TavoloService {
 	@Override
 	public List<Tavolo> findAllByUser_Id(Long id){
 		return tavoloRepository.findAllByUser_Id(id);
+	}
+	
+	@Override
+	public Tavolo findTavoloWithUtenti(Long id) {
+		TypedQuery<Tavolo> query = entityManager.createQuery("select t from Tavolo t LEFT JOIN FETCH t.users where t.id = ?1 ", Tavolo.class);
+		query.setParameter(1, id);
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 	
 }

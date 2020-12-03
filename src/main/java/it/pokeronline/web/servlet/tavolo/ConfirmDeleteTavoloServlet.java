@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import it.pokeronline.model.tavolo.Tavolo;
 import it.pokeronline.service.tavolo.TavoloService;
 
 @WebServlet("/tavolo/ConfirmDeleteTavoloServlet")
@@ -35,17 +36,12 @@ public class ConfirmDeleteTavoloServlet extends HttpServlet {
 		String idTavoloInput = request.getParameter("idDaInviareAExecuteDelete");
 		String idUtenteCreatore = request.getParameter("idUser");
 		
-		
-//		//palleggio i parametri per tornare in pagina se dovessi annullare la richiesta di eliminazione
-//		String expMinInput = request.getParameter("expMinPerTornareAllaRicercaEffettuata");
-//		String cifraMinInput = request.getParameter("cifraMinPerTornareAllaRicercaEffettuata");
-//		String denominazioneInput = request.getParameter("denominazionePerTornareAllaRicercaEffettuata");
-//		String dataCreazioneInput = request.getParameter("dataCreazionePerTornareAllaRicercaEffettuata");
-//		
-//		request.setAttribute("expMinPerTornareAllaRicercaEffettuata", expMinInput);
-//		request.setAttribute("cifraMinPerTornareAllaRicercaEffettuata",  cifraMinInput);
-//		request.setAttribute("denominazionePerTornareAllaRicercaEffettuata", denominazioneInput);
-//		request.setAttribute("dataCreazionePerTornareAllaRicercaEffettuata", dataCreazioneInput);
+		Tavolo tavoloDaDb = tavoloService.findTavoloWithUtenti(Long.parseLong(idTavoloInput));
+		if(tavoloDaDb.getUsers().size() > 0) {
+			request.setAttribute("errorMessage", "Il tuo tavolo è attualmente occupato da almeno un giocatore, non puoi eliminarlo!");
+			request.setAttribute("listaTavoli", tavoloService.listAllTavoli());
+			request.getRequestDispatcher("/tavolo/results.jsp").forward(request, response);
+		}
 		
 		request.setAttribute("idUserAttribute", idUtenteCreatore);
 		request.setAttribute("tavoloAttribute", tavoloService.caricaSingoloTavolo(Long.parseLong(idTavoloInput)));
