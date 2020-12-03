@@ -22,7 +22,7 @@ public interface UserService {
 	
 	public User eseguiRegistrazione(String username, String password);
 
-	public User checkRuoli(String username, String password);
+	public User userWithRuoliAndTavolo(String username, String password);
 
 	public User findUserWithRuoli(Long id);
 

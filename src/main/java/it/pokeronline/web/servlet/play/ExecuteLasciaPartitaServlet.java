@@ -16,11 +16,10 @@ import it.pokeronline.model.user.User;
 import it.pokeronline.service.user.UserService;
 import it.pokeronline.util.Util;
 
-
-@WebServlet("/play/ExecuteCompraCreditoServlet")
-public class ExecuteCompraCreditoServlet extends HttpServlet {
+@WebServlet("/play/ExecuteLasciaPartitaServlet")
+public class ExecuteLasciaPartitaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
 	@Autowired
 	UserService userService;
 
@@ -30,7 +29,7 @@ public class ExecuteCompraCreditoServlet extends HttpServlet {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 	
-    public ExecuteCompraCreditoServlet() {
+    public ExecuteLasciaPartitaServlet() {
         super();
     }
 
@@ -40,6 +39,9 @@ public class ExecuteCompraCreditoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		User userInSession = (User)request.getSession().getAttribute("user");
+		
+//		 il sistema fa il ++ di esperienza. Qui si individua immediatamente un bug cioè 
+//		 qualcuno per accumulare esperienza potrebbe entrare e uscire n volte senza giocare. Ma a noi non importa…
 		
 		String creditoAcquistato = request.getParameter("credito");
 

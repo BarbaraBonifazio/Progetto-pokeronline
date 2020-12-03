@@ -32,32 +32,44 @@
 					class="alert alert-success alert-dismissible fade show ${successMessage==null?'d-none': ''}"
 					role="alert">
 					${successMessage}
-						<span aria-hidden="true">&times;</span>
 				</div>
 	
-				<div class='card-body'>
+				<div class='card-body' Style="background: linear-gradient(to bottom, #ccffcc 5%, #66d856 100%);">
 	
-					<form method="get"
+					<form method="post"
 						action="${pageContext.request.contextPath}/play/ExecutePartitaServlet"
 						novalidate="novalidate">
 						
 						<input class="form-control" type="hidden" name="idUser" 
 									id="idUserCreatore" value="${user.id }">
-							<br><br><br><br><br>
+							<br><br>
+								
 							<div class="form-group col-md-12">
 									<button type="submit" class="btn btn-primary btn-lg" Style="background-color:green !important;
 									border-color:#327827">Gioca</button>
 							</div>
+							
 						
-							<br><br><br><br><br>
+							<br><br>
 							<div class="form-group col-md-12">
 									<a class="btn btn-danger btn-lg" role="button"
-									href="${pageContext.request.contextPath}/play/PreparePlayManagementServlet">Lascia</a>
+									href="${pageContext.request.contextPath}/play/ExecuteLasciaPartitaServlet">Lascia</a>
 							</div>
 							
-									
-	
+							<br><br><br><br><br>
+						<c:if test="${user.hasCreditoRichiesto() eq 'false' }">	
+						<h4 Style="color:red"> Il tuo credito è insufficiente per giocare a questo tavolo! </h4>
+						<br>
+						<div class="form-group col-md-12">
+									<a Style="color:white !important; border-color:#327827; background-color:#327827" class="btn  btn-md btn-outline-primary"
+								href="${pageContext.request.contextPath}/play/PreparePlayManagementServlet">Torna alla Home</a>
+						</div>
 						
+						<div class="form-group col-md-12">
+									<a Style="color:white !important; border-color:#327827; background-color:#327827" class="btn  btn-md btn-outline-primary"
+								href="${pageContext.request.contextPath}/play/PrepareCompraCreditoServlet">Compra Credito</a>
+						</div>
+						</c:if>
 					</form>
 					<!-- end card-body -->
 				</div>

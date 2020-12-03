@@ -43,9 +43,11 @@
 		</ul>
 			<ul class="navbar-nav mr-1">
 			<li class="nav-item active">
-			<a class="nav-link active"> Il tuo credito attuale è di <c:out value="${sessionScope.user.creditoAccumulato}"/> euro</a> </li>
-				<li class="nav-item active">
-				
+			<a class="nav-link active"> Credito accumulato: <c:out value="${sessionScope.user.creditoAccumulato}"/> euro </a> </li>
+			<li class="navPipe nav-item active">
+			<a class="nav-link active"> Esperienza accumulata: <c:out value="${sessionScope.user.expAccumulata}"/> punti</a> </li>
+				<li class="navPipe nav-item active">
+			
 				<a class="nav-link active"
 					href="${pageContext.request.contextPath}/LogoutServlet"> Logout </a></li>
 			</ul>

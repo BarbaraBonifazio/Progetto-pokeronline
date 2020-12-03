@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 		
 		User userInesistente = userService.eseguiRegistrazione(usernameInput, passwordInput);
 		User userCheAccede = userService.eseguiAccesso(usernameInput, passwordInput);
-		User user = userService.checkRuoli(usernameInput, passwordInput);
+		User user = userService.userWithRuoliAndTavolo(usernameInput, passwordInput);
 		
 		//se non trovo nulla non deve essere possibile accedere
 		if(userInesistente == null) {
