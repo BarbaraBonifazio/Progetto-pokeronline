@@ -35,14 +35,18 @@
 						</c:if>
 				</div></li>
 
-			<li class="nav-item active"><a class="nav-link" href="#">
-					Benvenuto/a <c:out value="${sessionScope.user.nome}"/> <c:out
-						value="${sessionScope.user.cognome}" />
+			<li class="nav-item active"><a class="nav-link active">
+					Benvenuto/a <c:out value="${sessionScope.user.username}"/> (<c:out value="${sessionScope.user.nome}"/> <c:out
+						value="${sessionScope.user.cognome}" />)
 			</a></li>
 
 		</ul>
 			<ul class="navbar-nav mr-1">
-				<li class="nav-item active"><a class="nav-link active"
+			<li class="nav-item active">
+			<a class="nav-link active"> Il tuo credito attuale è di <c:out value="${sessionScope.user.creditoAccumulato}"/> euro</a> </li>
+				<li class="nav-item active">
+				
+				<a class="nav-link active"
 					href="${pageContext.request.contextPath}/LogoutServlet"> Logout </a></li>
 			</ul>
 		

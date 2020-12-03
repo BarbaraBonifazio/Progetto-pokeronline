@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import it.pokeronline.model.user.User;
@@ -39,11 +40,10 @@ public class ExecuteCompraCreditoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String idUserCompratore = request.getParameter("idUser");
+		User userInSession = (User)request.getSession().getAttribute("user");
+		
 		String creditoAcquistato = request.getParameter("credito");
-		
-		User userDaDb = userService.caricaSingoloUser(Long.parseLong(idUserCompratore));
-		
+
 		if(!Util.isInteger(creditoAcquistato)) {
 			request.setAttribute("credito", creditoAcquistato);
 			request.setAttribute("errorMessage", "Il campo Cifra non è stato valorizzato correttamente!");
@@ -51,8 +51,8 @@ public class ExecuteCompraCreditoServlet extends HttpServlet {
 			return;
 		}
 		
-		userDaDb.setCreditoAccumulato(userDaDb.getCreditoAccumulato() + Integer.parseInt(creditoAcquistato));
-		userService.aggiorna(userDaDb);
+		userInSession.setCreditoAccumulato(userInSession.getCreditoAccumulato() + Integer.parseInt(creditoAcquistato));
+		userService.aggiorna(userInSession);
 		request.setAttribute("successMessage", "Hai acquistato con successo " + creditoAcquistato + " euro!");
 		request.getRequestDispatcher("/play/compraCredito.jsp").forward(request, response);
 	}

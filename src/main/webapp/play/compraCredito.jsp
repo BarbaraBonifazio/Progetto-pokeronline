@@ -9,7 +9,7 @@
 <!-- style per le pagine diverse dalla index -->
 <link href="${pageContext.request.contextPath}/assets/css/global.css" rel="stylesheet">
 
-<!-- <script type ="text/javascript">
+<script type ="text/javascript">
 	
 		 $(document).ready(function() { 
 		  	$("form").submit(function( event ) {
@@ -28,7 +28,7 @@
 			 });
 		})  
 		
-	  </script> -->
+	  </script>
 
 </head>
 <body>
@@ -55,7 +55,6 @@
 			class="alert alert-success alert-dismissible fade show ${successMessage==null?'d-none': ''}"
 			role="alert">
 			${successMessage}
-				<span aria-hidden="true">&times;</span>
 		</div>
 
 			<div class='card-body'>
@@ -90,7 +89,6 @@
 				<!-- end card-body -->
 			</div>
 
-		</div>
 		<!-- end container -->
 	</main>
 	<jsp:include page="../footer.jsp" />
