@@ -110,6 +110,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
+	
+	@Override
 	public User checkRuoli(String username, String password) {
 		TypedQuery<User> query = entityManager.createQuery("select u from User u JOIN FETCH u.ruoli where u.username = ?1 and u.password = ?2", User.class);
 		query.setParameter(1, username);

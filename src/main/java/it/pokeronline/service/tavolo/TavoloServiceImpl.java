@@ -79,6 +79,9 @@ public class TavoloServiceImpl implements TavoloService {
 		if (tavolo.getDataCreazione() != null) {
 			query1 = query1 + " AND t.dataCreazione = :dataCreazione";
 		}
+		if (tavolo.getUser() != null) {
+			query1 = query1 + " AND t.user = :user ";
+		}
 
 		TypedQuery<Tavolo> query2 = entityManager.createQuery(query1, Tavolo.class);
 		if (tavolo.getDenominazione() != null) {
@@ -90,6 +93,10 @@ public class TavoloServiceImpl implements TavoloService {
 		if (tavolo.getDataCreazione() != null) {
 			query2.setParameter("dataCreazione", tavolo.getDataCreazione());
 		}
+		if(tavolo.getUser() != null) {
+			query2.setParameter("user", tavolo.getUser());
+		}
+		
 		if(tavolo.equals(null)) {
 			this.listAllTavoli().toString();
 		}

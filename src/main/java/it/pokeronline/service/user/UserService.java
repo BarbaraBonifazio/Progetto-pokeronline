@@ -27,4 +27,6 @@ public interface UserService {
 	public User findUserWithRuoli(Long id);
 
 	public List <User> listAllUsersWithRuoli();
+
+	public User findByUsername(String username);
 }

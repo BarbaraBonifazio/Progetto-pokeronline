@@ -202,5 +202,18 @@ import it.pokeronline.model.tavolo.Tavolo;
 					return true;
 			}
 			return false;
-		}	
+		}
+		
+		@Override 
+		public boolean equals(Object object) {
+			if(object instanceof User) {	//controllo che l'oggetto passato in input sia un'istanza di Utente prima di poter fare il cast
+				User utente = (User)  object; //faccio il cast di o a all'oggetto Utente, assegnandolo a un oggetto Utente di appoggio 
+				return username.equals(utente.getUsername()); //effettuo il confronto sull'attributo username
+				//ritorno true se il confronto del valore a cui punta lo "username" della classe Utente 
+				//coincide con il valore a cui punta lo "username" del nuovo oggetto Utente di appoggio (che ha assunto il valore dell'oggetto passato in input)
+			}
+			else {
+				return this.equals(object); //altrimenti ritorno false in quanto il valore di "username" di object non coincide con quello dell'istanza
+			}
+		}
 }

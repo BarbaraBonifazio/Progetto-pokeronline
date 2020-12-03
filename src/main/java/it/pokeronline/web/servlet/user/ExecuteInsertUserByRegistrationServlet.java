@@ -22,24 +22,26 @@ import it.pokeronline.service.user.UserService;
 @WebServlet("/ExecuteInsertUserByRegistrationServlet")
 public class ExecuteInsertUserByRegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	
-    public ExecuteInsertUserByRegistrationServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ExecuteInsertUserByRegistrationServlet() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String nomeInput = request.getParameter("nome");
 		String cognomeInput = request.getParameter("cognome");
 		String usernameInput = request.getParameter("username");
@@ -49,7 +51,7 @@ public class ExecuteInsertUserByRegistrationServlet extends HttpServlet {
 		expInput = expInput.isEmpty() ? Long.toString(0) : expInput;
 		creditoInput = creditoInput.isEmpty() ? Integer.toString(0) : creditoInput;
 		UserDTO userDTO = new UserDTO(nomeInput, cognomeInput, usernameInput, passwordInput, expInput, creditoInput);
-		
+
 		// effettuo la validazione dell'input e se non va bene rimando in pagina
 		List<String> userErrors = userDTO.errors();
 		if (!userErrors.isEmpty()) {
@@ -58,17 +60,32 @@ public class ExecuteInsertUserByRegistrationServlet extends HttpServlet {
 			request.getRequestDispatcher("/user/registrazione.jsp").forward(request, response);
 			return;
 		}
-	
-		//se arrivo qui significa che va bene
+
+		// se arrivo qui significa che va bene
 		User userInstance = UserDTO.buildModelFromDto(userDTO);
 		userInstance.setStato(StatoUser.CREATO);
 		userInstance.setExpAccumulata(0L);
 		userInstance.setCreditoAccumulato(0);
-		Date date = new Date();  
-		userInstance.setDataRegistrazione(date);	
+		Date date = new Date();
+		userInstance.setDataRegistrazione(date);
+		try {
+			User userDaDb = userService.findByUsername(usernameInput);
+			if (userDaDb.equals(userInstance)) {
+				userErrors.add("Lo username che cerchi di inserire non è disponibile!");
+				request.setAttribute("userAttribute", userDTO);
+				request.setAttribute("userErrors", userErrors);
+				request.getRequestDispatcher("/user/registrazione.jsp").forward(request, response);
+				return;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("\n########################\n");
+			System.out.println("Lo username è disponibile.");
+			System.out.println("\n########################\n");
+		}
 		userService.inserisciNuovo(userInstance);
-				
-		//vado in pagina con ok
+
+		// vado in pagina con ok
 		request.setAttribute("successMessage", "Registrazione effettuata!");
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
