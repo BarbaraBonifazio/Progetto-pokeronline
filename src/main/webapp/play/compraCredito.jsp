@@ -9,7 +9,7 @@
 <!-- style per le pagine diverse dalla index -->
 <link href="${pageContext.request.contextPath}/assets/css/global.css" rel="stylesheet">
 
-<script type ="text/javascript">
+<!-- <script type ="text/javascript">
 	
 		 $(document).ready(function() { 
 		  	$("form").submit(function( event ) {
@@ -28,7 +28,7 @@
 			 });
 		})  
 		
-	  </script>
+	  </script> -->
 
 </head>
 <body>
@@ -49,19 +49,15 @@
 			class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}"
 			role="alert">
 			${errorMessage}
-			<button type="button" class="close" data-dismiss="alert"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
 		</div>
 		
-		<div class="alert alert-danger ${not empty playErrors?'':'d-none' }" role="alert">
+		<div
+			class="alert alert-success alert-dismissible fade show ${successMessage==null?'d-none': ''}"
+			role="alert">
+			${successMessage}
+				<span aria-hidden="true">&times;</span>
 		</div>
 
-		<div class='card'>
-			<div class='card-header'>
-				<h5>Compra Credito</h5>
-			</div>
 			<div class='card-body'>
 				
 				<a Style="color:green !important" class="text-right"
@@ -83,7 +79,7 @@
 						<label>Cifra</label> <input type="number" name="credito"
 							id="creditoAcquistato" class="form-control"
 							placeholder="Inserire importo" value="${cifraAttribute }" required>
-							<div class="invalid-feedback" id="errorCredito"> Il campo Cifra non è valorizzato correttamente!</div>
+							<div class="invalid-feedback" id="errorCredito"> Il campo Cifra non è stato valorizzato correttamente!</div>
 					</div>
 
 					<button type="submit" name="submit" value="submit" id="submit"
