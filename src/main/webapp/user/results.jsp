@@ -99,7 +99,7 @@
 											<!-- BOTTONE ELIMINA -->
 										<a class="btn btn-outline-danger btn-sm"
 											href="${pageContext.request.contextPath}
-												/user/ConfirmDeleteUtenteServlet?idDaInviareAExecuteDelete=${userResult.id}
+												/user/ConfirmAttivaDisattivaUserServlet?idDaInviareAExecuteDisattiva=${userResult.id}
 												">Attiva/Disattiva</a>
 									</td>
 	

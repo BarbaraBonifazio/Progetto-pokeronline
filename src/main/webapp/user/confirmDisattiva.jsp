@@ -4,7 +4,7 @@
 <html lang="it">
 <head>
 
-<title>Cancella Tavolo</title>
+<title>Disattiva User</title>
 
 <!-- style per le pagine diverse dalla index -->
 <link href="${pageContext.request.contextPath}/assets/css/global.css"
@@ -19,26 +19,29 @@
 		<div class='card'>
 			<div class="text-center">
 				<div class='card-header'>
-					<h4>Confermi di voler eliminare questo Tavolo?</h4>
+					<h4>Confermi di voler disattivare questo Utente?</h4>
+					<c:if test="${isInGioco == true}">
+					<h6 Style="color:red">Attenzione! L'utente verrà rimosso dalla partita in corso!</h6>
+					</c:if>
 				</div>
 	
 	
 				<div class='card-body'>
 	
 					<form method="get"
-						action="${pageContext.request.contextPath}/tavolo/ExecuteDeleteTavoloServlet"
+						action="${pageContext.request.contextPath}/user/ExecuteDisattivaUserServlet"
 						novalidate="novalidate">
 						
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								
 									<a class="btn btn-danger btn-lg" role="button"
-									href="${pageContext.request.contextPath}/tavolo/ExecuteListAllTavoliByCreatoreServlet?
-									idUserCreatore=${sessionScope.user.id}">Annulla</a>
+									href="${pageContext.request.contextPath}/user/ExecuteListAllUsersServlet?
+									">Annulla</a>
 										
 									<input class="form-control" type="hidden" 
-									id="idTavoloNascosto" name="id" 
-									value="${tavoloAttribute.id }">	
+									id="idUserNascosto" name="id" 
+									value="${userAttribute.id }">	
 										
 							</div>
 							<div class="form-group col-md-6">
