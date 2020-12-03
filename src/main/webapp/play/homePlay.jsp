@@ -24,21 +24,25 @@ body {
 
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
-			<div class="container">
-				<div
-					class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}"
-					role="alert">
-					${errorMessage}
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+			<div class="container">				
 				<h2 class="display-5 text-center" > Benvenuto nella tua Area di Gioco!</h2>				
 			</div>
 		</div>
 
 		 <div class="container text-center">
+		 
+				 <div
+					class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}"
+					role="alert">
+					${errorMessage}
+				</div>
+				
+				<div
+					class="alert alert-success alert-dismissible fade show ${successMessage==null?'d-none': ''}"
+					role="alert">
+					${successMessage}
+				</div>
+		 
 			<div class="row" Style="padding-top:132px">
 				<div class="col-md-6">
 					<h2>Compra Credito</h2>

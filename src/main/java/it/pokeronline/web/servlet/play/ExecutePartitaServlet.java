@@ -44,15 +44,6 @@ public class ExecutePartitaServlet extends HttpServlet {
 			request.getRequestDispatcher("/play/partita.jsp").forward(request, response);
 			return;
 		}
-		
-//		la pagina si ricarica ma nel frattempo bisogna trovare un modo per simulare la partita:
-//		double segno = Math.random();
-//		se segno >=0.5 segno positivo, negativo altrimenti.
-//		Int somma=(int)Math.random()*1000
-//		Tot = segno*somma
-//		Questa cifra, che può essere positiva o negativa, va aggiunta (o sottratta) al campo creditoAcc dell’utente che sta giocando.
-//		Se si arriva a importo < 0 non va un valore negativo ma a zero. A quel punto a piacere si intervenire con un 
-//		messaggio di credito esaurito e la possibilità di tornare alla home.
 
 		double segno = Math.random();
 		if(segno >= 0.5) {

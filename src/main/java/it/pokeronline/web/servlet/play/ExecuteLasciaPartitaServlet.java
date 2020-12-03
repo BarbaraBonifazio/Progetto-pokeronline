@@ -34,28 +34,23 @@ public class ExecuteLasciaPartitaServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		User giocatore = (User)request.getSession().getAttribute("user");
+
+		Long expGioco = giocatore.getExpAccumulata();
+		expGioco ++;
+		giocatore.setExpAccumulata(expGioco);
+		
+		giocatore.setTatolo(null);
+		
+		userService.aggiorna(giocatore);
+		
+		request.setAttribute("successMessage", "Hai abbandonato la partita ");
+		request.getRequestDispatcher("/play/homePlay.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		User userInSession = (User)request.getSession().getAttribute("user");
-		
-//		 il sistema fa il ++ di esperienza. Qui si individua immediatamente un bug cioè 
-//		 qualcuno per accumulare esperienza potrebbe entrare e uscire n volte senza giocare. Ma a noi non importa…
-		
-		String creditoAcquistato = request.getParameter("credito");
 
-		if(!Util.isInteger(creditoAcquistato)) {
-			request.setAttribute("credito", creditoAcquistato);
-			request.setAttribute("errorMessage", "Il campo Cifra non è stato valorizzato correttamente!");
-			request.getRequestDispatcher("/play/compraCredito.jsp").forward(request, response);
-			return;
-		}
-		
-		userInSession.setCreditoAccumulato(userInSession.getCreditoAccumulato() + Integer.parseInt(creditoAcquistato));
-		userService.aggiorna(userInSession);
-		request.setAttribute("successMessage", "Hai acquistato con successo " + creditoAcquistato + " euro!");
-		request.getRequestDispatcher("/play/compraCredito.jsp").forward(request, response);
 	}
 
 }
