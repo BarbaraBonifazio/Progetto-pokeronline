@@ -42,9 +42,9 @@ body {
 			<div class="row" Style="padding-top:132px">
 				<div class="col-md-6">
 					<h2>Compra Credito</h2>
-					<p>Descrizione Funzionalità</p>
+					<p>Acquista credito per giocare</p>
 					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareInsertTavoloServlet?idUser=${user.id}" 
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PrepareCompraCreditoServlet?idUser=${user.id}" 
 							role="button" Style="background-color:green; border-color:#327827" >Compra &raquo;</a>
 					</p>
 				</div>
@@ -53,7 +53,7 @@ body {
 					<h2>Go To Last Game</h2>
 					<p>Hai una partita in corso!</p>
 					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${user.id}" 
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PreparePlayServlet?idUser=${user.id}" 
 							role="button" Style="background-color:green; border-color:#327827">Gioca &raquo;</a>
 					</p>
 				</div>
@@ -63,7 +63,7 @@ body {
 					<h2>Ricerca Partite</h2>
 					<p>Inizia a giocare!</p>
 					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${user.id}" 
+						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PrepareSearchPartiteServlet?idUser=${user.id}" 
 							role="button" Style="background-color:green; border-color:#327827">Ricerca &raquo;</a>
 					</p>
 				</div>
