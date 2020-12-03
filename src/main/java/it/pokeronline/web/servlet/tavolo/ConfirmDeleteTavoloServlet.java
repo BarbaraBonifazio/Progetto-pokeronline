@@ -36,16 +36,16 @@ public class ConfirmDeleteTavoloServlet extends HttpServlet {
 		String idUtenteCreatore = request.getParameter("idUser");
 		
 		
-		//palleggio i parametri per tornare in pagina se dovessi annullare la richiesta di eliminazione
-		String expMinInput = request.getParameter("expMinPerTornareAllaRicercaEffettuata");
-		String cifraMinInput = request.getParameter("cifraMinPerTornareAllaRicercaEffettuata");
-		String denominazioneInput = request.getParameter("denominazionePerTornareAllaRicercaEffettuata");
-		String dataCreazioneInput = request.getParameter("dataCreazionePerTornareAllaRicercaEffettuata");
-		
-		request.setAttribute("expMinPerTornareAllaRicercaEffettuata", expMinInput);
-		request.setAttribute("cifraMinPerTornareAllaRicercaEffettuata",  cifraMinInput);
-		request.setAttribute("denominazionePerTornareAllaRicercaEffettuata", denominazioneInput);
-		request.setAttribute("dataCreazionePerTornareAllaRicercaEffettuata", dataCreazioneInput);
+//		//palleggio i parametri per tornare in pagina se dovessi annullare la richiesta di eliminazione
+//		String expMinInput = request.getParameter("expMinPerTornareAllaRicercaEffettuata");
+//		String cifraMinInput = request.getParameter("cifraMinPerTornareAllaRicercaEffettuata");
+//		String denominazioneInput = request.getParameter("denominazionePerTornareAllaRicercaEffettuata");
+//		String dataCreazioneInput = request.getParameter("dataCreazionePerTornareAllaRicercaEffettuata");
+//		
+//		request.setAttribute("expMinPerTornareAllaRicercaEffettuata", expMinInput);
+//		request.setAttribute("cifraMinPerTornareAllaRicercaEffettuata",  cifraMinInput);
+//		request.setAttribute("denominazionePerTornareAllaRicercaEffettuata", denominazioneInput);
+//		request.setAttribute("dataCreazionePerTornareAllaRicercaEffettuata", dataCreazioneInput);
 		
 		request.setAttribute("idUserAttribute", idUtenteCreatore);
 		request.setAttribute("tavoloAttribute", tavoloService.caricaSingoloTavolo(Long.parseLong(idTavoloInput)));

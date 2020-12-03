@@ -1,5 +1,5 @@
 package it.pokeronline.model.user;
 
 public enum StatoUser {
-	CREATO, ATTIVO, DISABILITATO;
+	CREATO, ATTIVO, NON_ATTIVO;
 }
