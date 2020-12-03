@@ -91,15 +91,18 @@
 <div class='card'>
 			<div class='card-header'>
 				<h5>Modifica User</h5>
-				
-				<a Style="color:green !important" class="text-right"
-					href="${pageContext.request.contextPath}/user/PrepareFindUsersServlet"
-					class='btn btn-outline-secondary' style='width: 80px'> <i
-					class='fa fa-chevron-left'></i> Indietro
-				</a>
 			</div>
 		
 	<div class='card-body'>
+	
+		<a Style="color:green !important" class="text-right"
+			href="${pageContext.request.contextPath}/user/ExecuteListAllUsersServlet"
+			class='btn btn-outline-secondary' style='width: 80px'> <i
+			class='fa fa-chevron-left'></i> Indietro
+		</a>
+		
+		<hr>
+	
 		<h6 class="card-title">
 			I campi con <span class="text-danger">*</span> sono obbligatori
 		</h6>

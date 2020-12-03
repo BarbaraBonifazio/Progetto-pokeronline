@@ -36,13 +36,8 @@
 							<div class="form-group col-md-6">
 								
 									<a class="btn btn-danger btn-lg" role="button"
-									href="${pageContext.request.contextPath}/tavolo/ExecuteFindTavoliServlet?
-										denominazione=${denominazionePerTornareAllaRicercaEffettuata}&
-										expMin=${expMinPerTornareAllaRicercaEffettuata}&
-										cifraMin=${cifraMinPerTornareAllaRicercaEffettuata}&
-										data=${dataCreazionePerTornareAllaRicercaEffettuata}&
-										idUtente=${idUserAttribute}
-										">Annulla</a>
+									href="${pageContext.request.contextPath}/tavolo/ExecuteListAllTavoliByCreatoreServlet?
+									idUserCreatore=${sessionScope.user.id}">Annulla</a>
 										
 									<input class="form-control" type="hidden" 
 									id="idTavoloNascosto" name="id" 

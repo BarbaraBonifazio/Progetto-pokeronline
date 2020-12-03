@@ -103,4 +103,9 @@ public class TavoloServiceImpl implements TavoloService {
 		return query2.getResultList();
 	}
 
+	@Override
+	public List<Tavolo> findAllByUser_Id(Long id){
+		return tavoloRepository.findAllByUser_Id(id);
+	}
+	
 }

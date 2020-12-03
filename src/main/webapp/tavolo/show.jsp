@@ -21,6 +21,15 @@
 
 			
 			<div class='card-body'>
+			
+				<a Style="color:green !important" class="text-right"
+					href="${pageContext.request.contextPath}/tavolo/ExecuteListAllTavoliByCreatoreServlet?idUserCreatore=${sessionScope.user.id}"
+					class='btn btn-outline-secondary' style='width: 80px'> <i
+					class='fa fa-chevron-left'></i> Indietro
+				</a>
+				
+				<hr>
+				
 				<dl class="row">
 
 
@@ -49,13 +58,6 @@
 				</dl>
  			</div>
 		
-
-			<div class='card-footer'>
-				<a Style="color:green !important" href="${pageContext.request.contextPath}/tavolo/PrepareSearchTavoliServlet?idUser=${idUserPerSearch}"
-					class='btn btn-outline-secondary' style='width: 90px'> <i
-					class='fa fa-chevron-left'></i> Nuova Ricerca
-				</a>
-			</div>
 		</div> 
 		<!-- end main container -->
 	</main>

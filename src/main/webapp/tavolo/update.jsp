@@ -77,13 +77,16 @@
 		<div class='card'>
 			<div class='card-header'>
 				<h5>Modifica Tavolo</h5>
-				<%-- <a Style="color:green !important" class="text-right"
-					href="${pageContext.request.contextPath}/PrepareSearchTavoliServlet?idUser=${idUserPerUpdateTavolo}"
-					class='btn btn-outline-secondary' style='width: 80px'> <i
-					class='fa fa-chevron-left'></i> Indietro
-				</a> AGGIUNGERE PASSAGGIO PARAMETRI PER TORNARE ALLA RICERCA EFFETTUATA--%>
 			</div>
 			<div class='card-body'>
+				
+				<a Style="color:green !important" class="text-right"
+					href="${pageContext.request.contextPath}/tavolo/ExecuteListAllTavoliByCreatoreServlet?idUserCreatore=${sessionScope.user.id}"
+					class='btn btn-outline-secondary' style='width: 80px'> <i
+					class='fa fa-chevron-left'></i> Indietro
+				</a>
+				
+				<hr>
 				
 				<form method="post"
 					action="${pageContext.request.contextPath}/tavolo/ExecuteUpdateTavoloServlet"

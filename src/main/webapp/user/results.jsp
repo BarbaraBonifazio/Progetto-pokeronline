@@ -49,9 +49,16 @@
 			<div class='card-header'>
 				<h5>Lista degli utenti ricercati</h5>
 			</div>
-			<div class='card-body'>		
-					
-				<%-- </c:if> --%>
+			
+			
+			<div class='card-body'>	
+				
+					<a Style="color:green !important" class="text-right"
+					href="${pageContext.request.contextPath}/user/PrepareFindUsersServlet"
+					class='btn btn-outline-secondary' style='width: 80px'> <i
+					class='fa fa-chevron-left'></i> Nuova Ricerca
+					</a>
+				
 				<div class='table-responsive'>
 					<table class='table table-striped '>
 						<thead>
@@ -101,13 +108,6 @@
 						</tbody>
 					</table>
 				</div>
-
-			<div class='card-footer'>
-				<a href="${pageContext.request.contextPath}/user/PrepareFindUsersServlet"
-					class='btn btn-outline-secondary' style='width: 90px'> <i
-					class='fa fa-chevron-left'></i> Nuova Ricerca
-				</a>
-			</div>
 
 				<!-- end card-body -->
 			</div>

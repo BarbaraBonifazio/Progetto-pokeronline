@@ -90,44 +90,8 @@ public class ExecuteUpdateUserServlet extends HttpServlet {
 			return;
 		}
 
-	// se arrivo qui significa che va bene
+		// se arrivo qui va tutto bene
 		User userInstance = UserDTO.buildModelFromDto(userDTO);
-			
-//		if(userInstance.getStato() == StatoUser.ATTIVO) {
-//			if (userInstance.getRuoli().size() > 0) {
-//				userInstance = userService.findUserWithRuoli(Long.parseLong(idUserInput));
-//			} else {
-//				for(String r:ruoliInput){
-//					Long idRuolo = Long.parseLong(r);
-//					Ruolo ruoloNew = new Ruolo();
-//					ruoloNew.setId(idRuolo);
-//					listaRuoli.add(r);
-//					Ruolo ruoloDaDb = ruoloService.caricaSingoloRuolo(idRuolo);
-//					userInstance.getRuoli().add(ruoloDaDb);
-//				}
-//			}
-//		} 
-//			else {
-//			//lista di enum per lo stato dell'utente 
-//			List<String> listaStati = Stream.of(StatoUser.values()).map(Enum::name).collect(Collectors.toList());
-//			userDTO.setStato(StatoUser.CREATO);
-//			request.setAttribute("listaStati", listaStati);
-//			request.setAttribute("userErrors", userErrors);
-//			request.setAttribute("idUserPerUpdate", idUserInput);
-//			
-//			request.setAttribute("isCreato", isCreato);
-//			request.setAttribute("userAttribute", userDTO);
-//			request.setAttribute("listaRuoli", ruoloService.listAllRuoli());
-//			userErrors.add("Per poter impostare un ruolo devi prima impostare lo stato dell'utente ad \"ATTIVO\"!");
-//			request.getRequestDispatcher("/user/update.jsp").forward(request, response);
-//			return;
-//		}
-		
-		
-		//Se arrivo qui va tutto bene 
-		
-		
-		
 		User userDaDb = userService.findUserWithRuoli(Long.parseLong(idUserInput));
 		userDaDb.setNome(userInstance.getNome());
 		userDaDb.setCognome(userInstance.getCognome());

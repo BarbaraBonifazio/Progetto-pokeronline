@@ -93,9 +93,6 @@ public class UserServiceImpl implements UserService {
 		if (user.getRuoli() != null && !user.getRuoli().isEmpty()) {
 			query2.setParameter("ruoli", user.getRuoli());
 		}
-		if(user.equals(null)) {
-			this.listAllUsers().toString();
-		}
 		return query2.getResultList();
 	}
 

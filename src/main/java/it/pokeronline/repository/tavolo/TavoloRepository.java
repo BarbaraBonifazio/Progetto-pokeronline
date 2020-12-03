@@ -11,5 +11,8 @@ import it.pokeronline.model.tavolo.Tavolo;
 public interface TavoloRepository extends CrudRepository<Tavolo, Long>,QueryByExampleExecutor <Tavolo> {
 
 	List<Tavolo> findAllByDenominazioneContaining(String term);
+	
+	List<Tavolo> findAllByUser_Id(Long id);
+	
 
 }
