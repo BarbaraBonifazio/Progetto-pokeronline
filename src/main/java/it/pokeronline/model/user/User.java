@@ -238,4 +238,9 @@ import it.pokeronline.model.tavolo.Tavolo;
 				return this.equals(object); //altrimenti ritorno false in quanto il valore di "username" di object non coincide con quello dell'istanza
 			}
 		}
+		
+		@Override
+		public String toString() {
+			return "Nome " + nome + "Cognome " + cognome + "Username " + username;
+		}
 }

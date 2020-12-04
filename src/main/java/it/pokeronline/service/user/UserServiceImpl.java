@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.pokeronline.model.ruolo.Codice;
 import it.pokeronline.model.user.StatoUser;
 import it.pokeronline.model.user.User;
 import it.pokeronline.repository.user.UserRepository;
@@ -138,6 +139,26 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> listAllUsersWithRuoli() {
 		return userRepository.listAllUsersWithRuoli();
+	}
+	
+	@Transactional
+	public List<User> findCreatori(String username, Codice codiceRuoloUserSpecialPlayer, Codice codiceRuoloUserAdmin) {
+					
+		TypedQuery<User> query = entityManager.createQuery("select distinct u from User u RIGHT JOIN FETCH u.ruoli r "
+				+ "JOIN FETCH u.tavoli where u.username like ?1 AND r.codice = ?2 OR r.codice = ?3", User.class);
+		query.setParameter(1, username+'%');
+		query.setParameter(2, codiceRuoloUserSpecialPlayer);
+		query.setParameter(3, codiceRuoloUserAdmin);
+			return query.getResultList();
+	}
+	
+	@Override
+	public List<User> findGiocatori(String username) {
+		
+
+		TypedQuery<User> query = entityManager.createQuery("select u from User u RIGHT JOIN FETCH u.tavolo where u.username like ?1 ", User.class);
+		query.setParameter(1, username+'%');
+		return query.getResultList();
 	}
 	
 }

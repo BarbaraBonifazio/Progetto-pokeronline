@@ -18,5 +18,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	@Query("Select Distinct u From User u LEFT JOIN FETCH u.ruoli r")
 	List <User> listAllUsersWithRuoli();
+	
+	
 
 }

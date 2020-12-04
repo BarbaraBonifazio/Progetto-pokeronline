@@ -2,6 +2,7 @@ package it.pokeronline.service.user;
 
 import java.util.List;
 
+import it.pokeronline.model.ruolo.Codice;
 import it.pokeronline.model.user.User;
 
 public interface UserService {
@@ -29,4 +30,11 @@ public interface UserService {
 	public List <User> listAllUsersWithRuoli();
 
 	public User findByUsername(String username);
+
+	public List<User> findCreatori(String username, Codice codiceRuoloUserSpecialPlayer, Codice codiceRuoloUserAdmin);
+
+	public List<User> findGiocatori(String username);
+
+	
+
 }

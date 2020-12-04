@@ -59,7 +59,7 @@ public class ExecutePartitaServlet extends HttpServlet {
 		giocatore.setCreditoAccumulato(creditoUser + Tot);
 		
 
-		if(creditoUser < 0) {
+		if(giocatore.getCreditoAccumulato() < 0) {
 			giocatore.setCreditoAccumulato(0);
 			userService.aggiorna(giocatore);
 			request.setAttribute("errorMessage", "Hai esaurito il credito a disposizione per giocare!");

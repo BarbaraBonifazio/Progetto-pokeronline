@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.pokeronline.dto.UserDTO;
+
 @WebServlet("/play/PrepareSearchPartiteServlet")
 public class PrepareSearchPartiteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,6 +18,7 @@ public class PrepareSearchPartiteServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("userAttribute", new UserDTO());
 		request.getRequestDispatcher("/play/searchPartite.jsp").forward(request, response);
 	}
 
