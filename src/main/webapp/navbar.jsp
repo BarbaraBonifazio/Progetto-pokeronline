@@ -26,7 +26,7 @@
 				class="nav-link dropdown-toggle" href="#" id="dropdown01"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cerca</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
-					 <a	class="dropdown-item" href="${pageContext.request.contextPath}/play/PreparePlayServlet">Play Management</a> 
+					 <a	class="dropdown-item" href="${pageContext.request.contextPath}/play/PreparePlayManagementServlet">Play Management</a> 
 				 		<c:if test="${!sessionScope.isPlayer eq 'true'}">
 						<a class="dropdown-item" href="${pageContext.request.contextPath}/tavolo/PrepareGestioneTavolo">Gestione Tavolo</a>
 						</c:if>

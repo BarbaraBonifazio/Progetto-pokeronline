@@ -15,6 +15,11 @@
 
 <body>
 
+
+  <!--   <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); 
+    background-repeat: no-repeat; background-size: cover; background-position: center center;">  -->
+
+
 	<jsp:include page="../navbar.jsp"></jsp:include>
 	
 	<div class="container">
@@ -83,5 +88,8 @@
 		<!-- /.container -->
 	</div>
 	<jsp:include page="../footer.jsp" />
+	
+<!-- END BG -->
+</div>	
 </body>
 </html>

@@ -45,8 +45,8 @@ public class ExecuteSearchPartiteServlet extends HttpServlet {
 		String denominazioneInput = request.getParameter("denominazione");
 		String cifraMinInput = request.getParameter("cifraMin");
 		String dataInput = request.getParameter("data");
-		String idUserCreatoreRicercato = request.getParameter("creatoreInput");
-		String idUserGiocatoreRicercato = request.getParameter("partecipanteInput");
+		String usernameCreatoreRicercato = request.getParameter("creatoreInput");
+		String usernameGiocatoreRicercato = request.getParameter("partecipanteInput");
 		
 		User userGiocatoreInSession = (User)request.getSession().getAttribute("user");
 
@@ -65,24 +65,24 @@ public class ExecuteSearchPartiteServlet extends HttpServlet {
 		// se arrivo qui significa che va bene
 		
 		Tavolo tavoloInstance = TavoloDTO.buildModelFromDto(tavoloDTO);
-		if (idUserCreatoreRicercato == null) {
-			request.setAttribute("creatoreInput", idUserCreatoreRicercato);
+		if (usernameCreatoreRicercato == null) {
+			request.setAttribute("creatoreInput", usernameCreatoreRicercato);
 			tavoloErrors.add("Il campo Creatore non è valido!");
 			request.setAttribute("tavoloErrors", tavoloErrors);
 			request.getRequestDispatcher("/play/searchPartite.jsp").forward(request, response);
 			return;
-		} else if (!idUserCreatoreRicercato.isEmpty()){
-			User userCreatoreDaDb = userService.caricaSingoloUser(Long.parseLong(idUserCreatoreRicercato));
+		} else if (!usernameCreatoreRicercato.isEmpty()){
+			User userCreatoreDaDb = userService.findByUsername(usernameCreatoreRicercato);
 			tavoloInstance.setUser(userCreatoreDaDb);
 		}
-		if (idUserGiocatoreRicercato == null) {
-			request.setAttribute("partecipanteInput", idUserGiocatoreRicercato);
+		if (usernameGiocatoreRicercato == null) {
+			request.setAttribute("partecipanteInput", usernameGiocatoreRicercato);
 			tavoloErrors.add("Il campo Partecipante non è valido!");
 			request.setAttribute("tavoloErrors", tavoloErrors);
 			request.getRequestDispatcher("/play/searchPartite.jsp").forward(request, response);
 			return;
-		} else if (!idUserGiocatoreRicercato.isEmpty()){
-			User userGiocatoreDaDb = userService.caricaSingoloUser(Long.parseLong(idUserGiocatoreRicercato));
+		} else if (!usernameGiocatoreRicercato.isEmpty()){
+			User userGiocatoreDaDb = userService.findByUsername(usernameGiocatoreRicercato);
 			tavoloInstance.getUsers().add(userGiocatoreDaDb);
 		}
 		
