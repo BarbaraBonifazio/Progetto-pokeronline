@@ -127,13 +127,10 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User findUserWithRuoli(Long id) {
-		TypedQuery<User> query = entityManager.createQuery("select u from User u LEFT JOIN FETCH u.ruoli where u.id = ?1 ", User.class);
+		TypedQuery<User> query = entityManager.createQuery("select distinct u from User u LEFT JOIN FETCH u.ruoli where u.id = ?1 ", User.class);
 		query.setParameter(1, id);
-		try {
 			return query.getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
+
 	}
 
 	@Override

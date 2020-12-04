@@ -137,7 +137,10 @@
 						value="${userAttribute.username}" required>
 						<div class="invalid-feedback" id="errorUsername"> Il campo username risulta vuoto!</div>
 				</div>
-				<c:if test="${isCreato == true}">
+				
+				
+				
+				<c:if test="${isCreato}">
 				<div class="form-group col-md-6">
 					<label>Stato</label> 
 					<select id="statoUser" name="stato" class="form-control" required>
@@ -158,16 +161,27 @@
 							<input class="form-check-input" type="checkbox" required
 								value="${ruolo.id}" id="ruoli" name="idRuoli"
 								<c:forEach items="${userAttribute.ruoli}" var="ruoloSelezionato">
-											${ruoloSelezionato.id eq ruolo.id ? 'checked' : ''} 
-										</c:forEach>>
+									${ruoloSelezionato.id eq ruolo.id ? 'checked' : ''} 
+								</c:forEach>
+							>
 							<label class="form-check-label" for="defaultCheck1">
 								${ruolo.codice} </label>	
 						</div>	
 					</c:forEach>
 					<div class="invalid-feedback" id="errorRuoli"> Non risulta selezionato alcun ruolo!</div>
 				</div>
-				</c:if>
+				</c:if> 
 				
+				<c:if test="${!isCreato}">
+				<Input type="hidden" name="stato"
+					id="statoNascosto" class="form-control"
+					value="${userAttribute.stato}">
+					
+					<c:forEach items="${userAttribute.ruoli}" var="ruoloSelezionato">
+						<input class="form-check-input" type="hidden" required
+						value="${ruoloSelezionato.id}" id="ruoli" name="idRuoli">
+					</c:forEach>
+				</c:if>
 
 				<Input type="hidden" name="nomeUserPerRicerca"
 					id="nomeUtenteDaPassare" class="form-control"
