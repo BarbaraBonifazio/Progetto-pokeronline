@@ -75,9 +75,11 @@
 								 value="${user.id }">
 
 					<div class="form-group col-md-6">
-						<label>Cifra</label> <input type="number" name="credito"
-							id="creditoAcquistato" class="form-control"
-							placeholder="Inserire importo" value="${cifraAttribute }" required>
+						<label>Cifra</label> 
+						<input type="number" name="credito" id="creditoAcquistato" class="form-control"
+							placeholder="Inserire importo" value="${cifraAttribute }" 
+							min="0" max="99999" maxlength="5" 
+							oninput="this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value < 1) ? (0) : this.value;"required>
 							<div class="invalid-feedback" id="errorCredito"> Il campo Cifra non è stato valorizzato correttamente!</div>
 					</div>
 

@@ -43,7 +43,7 @@ public class ExecuteCompraCreditoServlet extends HttpServlet {
 		
 		String creditoAcquistato = request.getParameter("credito");
 
-		if(!Util.isInteger(creditoAcquistato)) {
+		if(!Util.isInteger(creditoAcquistato) || Integer.parseInt(creditoAcquistato) < 0) {
 			request.setAttribute("credito", creditoAcquistato);
 			request.setAttribute("errorMessage", "Il campo Cifra non è stato valorizzato correttamente!");
 			request.getRequestDispatcher("/play/compraCredito.jsp").forward(request, response);

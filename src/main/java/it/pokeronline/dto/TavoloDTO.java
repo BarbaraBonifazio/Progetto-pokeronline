@@ -86,7 +86,7 @@ public class TavoloDTO {
 		 }	
 		if (StringUtils.isBlank(this.cifraMin) || !Util.isInteger(this.cifraMin)) {
 			result.add("Il campo Puntata Minima dev'essere valorizzato con un numero decimale");
-		} else if(Integer.parseInt(this.cifraMin) <= 0) {
+		} else if(Integer.parseInt(this.cifraMin) < 0) {
 			result.add("Il campo Puntata Minima non dev'essere negativo");
 		 }
 		if (StringUtils.isBlank(this.denominazione)) {
@@ -100,7 +100,7 @@ public class TavoloDTO {
 		if (this.cifraMin != null && !this.cifraMin.isEmpty()) {
 			if (!Util.isInteger(this.cifraMin)) {
 				result.add("Il campo Puntata Minima dev'essere valorizzato con un numero decimale");
-			} else if(Integer.parseInt(this.cifraMin) <= 0) {
+			} else if(Integer.parseInt(this.cifraMin) < 0) {
 				result.add("Il campo Puntata Minima non dev'essere negativo");
 			 }
 		}

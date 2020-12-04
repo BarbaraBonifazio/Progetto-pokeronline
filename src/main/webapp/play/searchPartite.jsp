@@ -56,20 +56,24 @@
 					novalidate>
 							
 					<div class="form-group col-md-6">
-						<label>Denominazione</label> <input type="text" name="denominazione"
-							id="denominazione" class="form-control"
+						<label>Denominazione</label> 
+						<input type="text" name="denominazione" id="denominazione" class="form-control"
 							placeholder="Inserire almeno i primi tre caratteri" value="${tavoloAttribute.denominazione }" required>
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label>Data Creazione</label> <input type="date" name="data"
-							id="dataCreazione" class="form-control" value="${tavoloAttribute.dataCreazione }"required>
+						<label>Data Creazione</label> 
+						<input type="date" name="data" id="dataCreazione" class="form-control" 
+							value="${tavoloAttribute.dataCreazione }"required>
 					</div>
 
 					<div class="form-group col-md-6">
-						<label>Puntata Minima</label> <input type="number" name="cifraMin"
-							id="cifraMinima" class="form-control"
-							placeholder="Inserire Puntata Minima" value="${tavoloAttribute.cifraMin }"required>
+						<label>Puntata Minima</label> 
+						<input type="number" name="cifraMin" min="0" id="cifraMinima" class="form-control" 
+							placeholder="Inserire Puntata Minima" value="${tavoloAttribute.cifraMin }"required
+							min="0" max="99999" maxlength="5" 
+							oninput="this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value < 1) ? (0) : this.value;">
+						<div class="invalid-feedback" id="errorCifraMin"> Il campo Puntata Minima non è valido!</div>
 					</div>
 					
 					<div class="form-group col-md-6">
