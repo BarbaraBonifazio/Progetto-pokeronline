@@ -82,8 +82,8 @@
 				
 				<a Style="color:green !important" class="text-right"
 					href="${pageContext.request.contextPath}/tavolo/ExecuteListAllTavoliByCreatoreServlet?idUserCreatore=${sessionScope.user.id}"
-					class='btn btn-outline-secondary' style='width: 80px'> <i
-					class='fa fa-chevron-left'></i> Indietro
+						class='btn btn-outline-secondary' style='width: 80px'> 
+					<i class='fa fa-chevron-left'></i> Indietro
 				</a>
 				
 				<hr>
@@ -99,8 +99,8 @@
 								 value="${idTavoloPerUpdate }">
 
 					<div class="form-group col-md-6">
-						<label>Esperienza Minima</label> <input type="number" name="expMin"
-							id="esperienzaMinima" class="form-control"
+						<label>Esperienza Minima</label> 
+							<input type="number" name="expMin" id="esperienzaMinima" class="form-control"
 							placeholder="Inserire Esperienza Minima" value="${tavoloAttribute.expMin }" required
 							min="0" max="9999" maxlength="4" 
 							oninput="this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value < 1) ? (0) : this.value;">
@@ -109,8 +109,7 @@
 
 					<div class="form-group col-md-6">
 						<label>Puntata Minima</label> 
-						<input type="number" step="0.50" name="cifraMin"
-							id="cifraMinima" class="form-control"
+							<input type="number" step="0.50" name="cifraMin" id="cifraMinima" class="form-control"
 							placeholder="Inserire Cifra Minima" value="${tavoloAttribute.cifraMin }" required
 							min="0" max="9999" maxlength="4" 
 							oninput="this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value < 1) ? (0) : this.value;">
@@ -118,8 +117,8 @@
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label>Denominazione</label> <input type="text" name="denominazione"
-							id="denominazione" class="form-control"
+						<label>Denominazione</label> 
+							<input type="text" name="denominazione" id="denominazione" class="form-control"
 							placeholder="Inserire denominazione" value="${tavoloAttribute.denominazione }" required>
 							<div class="invalid-feedback" id="errorDenominazione"> Il campo Denominazione risulta vuoto!</div>
 					</div>

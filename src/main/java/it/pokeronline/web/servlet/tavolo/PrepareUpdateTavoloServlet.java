@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import it.pokeronline.model.tavolo.Tavolo;
+import it.pokeronline.model.user.User;
 import it.pokeronline.service.tavolo.TavoloService;
 
 
@@ -41,8 +42,10 @@ public class PrepareUpdateTavoloServlet extends HttpServlet {
 		Tavolo tavoloDaDb = tavoloService.findTavoloWithUtenti(Long.parseLong(idTavoloInput));
 		if(tavoloDaDb.getUsers().size() > 0) {
 			request.setAttribute("errorMessage", "Il tuo tavolo è attualmente occupato da almeno un giocatore, non puoi modificarlo!");
-			request.setAttribute("listaTavoli", tavoloService.listAllTavoli());
+			User userInSession = (User)request.getSession().getAttribute("user");
+			request.setAttribute("listaTavoli", tavoloService.findAllByUser_Id(userInSession.getId()));
 			request.getRequestDispatcher("/tavolo/results.jsp").forward(request, response);
+			return;
 		}
 		
 		request.setAttribute("idUserPerUpdateTavolo", idUtenteCreatore);

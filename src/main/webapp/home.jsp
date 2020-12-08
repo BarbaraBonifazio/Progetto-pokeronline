@@ -52,7 +52,7 @@ body {
 						Accedi &raquo;</a>
 					</p>
 				</div>
-				<c:if test="${!sessionScope.isPlayer eq 'true'}">
+				<c:if test="${!sessionScope.isPlayer}">
 				<div class="col-md-4" Style="padding-top:120px">
 					<h2>Gestione Tavoli</h2>
 					<p> Gestisci i tuoi tavoli! </p>
@@ -62,7 +62,7 @@ body {
 					</p>
 				</div>
 				</c:if>
-				<c:if test="${sessionScope.isAdmin eq 'true'}">
+				<c:if test="${sessionScope.isAdmin}">
 					<div class="col-md-4" Style="padding-top:80px">
 						<h2 >Gestione Amministrazione</h2>
 						<p> Gestione utenze giocatori</p>

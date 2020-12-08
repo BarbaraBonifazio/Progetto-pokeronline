@@ -80,32 +80,33 @@
 				<form method="post"
 					action="${pageContext.request.contextPath}/ExecuteInsertUserByRegistrationServlet"
 					 id="form" class="needs-validation" novalidate>
-							<label>Nome <span class="text-danger">*</span></label> <input
-								type="text" name="nome" id="nomeUtente" class="form-control"
+							<label>Nome <span class="text-danger">*</span></label> 
+								<input type="text" name="nome" id="nomeUtente" class="form-control"
 								placeholder="Inserire nome" value="${userAttribute.nome}" required>
 								<div class="invalid-feedback" id="errorName"> Il campo nome risulta vuoto!</div>					
 							<br>
-							<input class="form-control" type="hidden" name="exp" id="expAccumulata" 
+								<input class="form-control" type="hidden" name="exp" id="expAccumulata" 
 								 value="${userAttribute.expAccumulata }">
-							<input class="form-control" type="hidden" name="credito" id="creditoAccumulato" 
-								 value="${userAttribute.creditoAccumulato }">					
-							<label>Cognome <span class="text-danger">*</span></label> <input
-								type="text" name="cognome" id="cognomeUtente"
+								<input class="form-control" type="hidden" name="credito" id="creditoAccumulato" 
+								 value="${userAttribute.creditoAccumulato }">
+								 					
+							<label>Cognome <span class="text-danger">*</span></label> 
+								<input type="text" name="cognome" id="cognomeUtente"
 								class="form-control" placeholder="Inserire cognome"
 								value="${userAttribute.cognome}" required>
-							<div class="invalid-feedback" id="errorSurname"> Il campo cognome risulta vuoto!</div>	
+								<div class="invalid-feedback" id="errorSurname"> Il campo cognome risulta vuoto!</div>	
 							<br>		
-							<label>Username <span class="text-danger">*</span></label> <input
-								type="text" class="form-control" name="username"
+							<label>Username <span class="text-danger">*</span></label> 
+								<input type="text" class="form-control" name="username"
 								id="usernameUtente" placeholder="Inserire username"
 								value="${userAttribute.username}" required>
-							<div class="invalid-feedback" id="errorUsername"> Il campo username risulta vuoto!</div>	
+								<div class="invalid-feedback" id="errorUsername"> Il campo username risulta vuoto!</div>	
 							<br>
-							<label>Password <span class="text-danger">*</span></label> <input
-								type="password" class="form-control" name="password"
+							<label>Password <span class="text-danger">*</span></label> 
+								<input type="password" class="form-control" name="password"
 								id="passwordUtente" placeholder="Inserire password"
 								value="${userAttribute.password}" required>
-							<div class="invalid-feedback" id="errorPassword"> Il campo password risulta vuoto!</div>
+								<div class="invalid-feedback" id="errorPassword"> Il campo password risulta vuoto!</div>
 							<br>
 						<div class="text-center">	
 							<button type="submit" name="submit" value="submit" id="submit"

@@ -61,15 +61,14 @@
 				
 				<a Style="color:green !important" class="text-right"
 					href="${pageContext.request.contextPath}/play/PreparePlayManagementServlet"
-					class='btn btn-outline-secondary' style='width: 80px'> <i
-					class='fa fa-chevron-left'></i> Indietro
+					class='btn btn-outline-secondary' style='width: 80px'> 
+					<i class='fa fa-chevron-left'></i> Indietro
 				</a>
 				
 				<hr>
 				
 				<form method="post"
-					action="${pageContext.request.contextPath}/play/ExecuteCompraCreditoServlet"
-					novalidate>
+					action="${pageContext.request.contextPath}/play/ExecuteCompraCreditoServlet" novalidate>
 					
 					<input class="form-control" type="hidden" name="idUser" id="idUserCreatore" 
 								 value="${user.id }">

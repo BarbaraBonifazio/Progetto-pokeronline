@@ -51,22 +51,13 @@
 			 });
 		})  
 		
-	  </script>  
+	  </script> 
 
 </head>
 <body>
 	<jsp:include page="../navbar.jsp" />
 
 	<main role="main" class="container">
-
-		<div class="alert alert-danger alert-dismissible fade show d-none"
-			role="alert">
-			Operazione fallita!
-			<button type="button" class="close" data-dismiss="alert"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
 
 	<c:forEach items="${requestScope.errorMessage}" var="errore">
 		<div
@@ -85,6 +76,7 @@
 		</div>
 	
 <div class='card'>
+
 			<div class='card-header'>
 				<h5>Modifica User</h5>
 			</div>
@@ -112,34 +104,29 @@
 					class="form-control" value="${idUserPerUpdate}" required>
 
 				<div class="form-group col-md-6">
-					<label>Nome <span class="text-danger">*</span></label> <input
-						type="text" name="nome" id="nomeUser" class="form-control"
-						placeholder="Inserire nome"
-						value="${userAttribute.nome}" required>
+					<label>Nome <span class="text-danger">*</span></label> 
+						<input type="text" name="nome" id="nomeUser" class="form-control"
+							placeholder="Inserire nome" value="${userAttribute.nome}" required>
 						<div class="invalid-feedback" id="errorNome"> Il campo nome risulta vuoto!</div>
 				</div>
 
 				<div class="form-group col-md-6">
-					<label>Cognome <span class="text-danger">*</span></label> <input
-						type="text" name="cognome" id="cognomeUser" class="form-control"
-						placeholder="Inserire cognome"
-						value="${userAttribute.cognome}" required>
+					<label>Cognome <span class="text-danger">*</span></label> 
+						<input type="text" name="cognome" id="cognomeUser" class="form-control"
+							placeholder="Inserire cognome" value="${userAttribute.cognome}" required>
 						<div class="invalid-feedback" id="errorCognome"> Il campo cognome risulta vuoto!</div>
 				</div>
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label>Username <span class="text-danger">*</span></label> <input
-						type="text" class="form-control" name="username"
-						id="usernameUser"
-						placeholder="Inserire username"
-						value="${userAttribute.username}" required>
+					<label>Username <span class="text-danger">*</span></label> 
+						<input type="text" class="form-control" name="username"
+							id="usernameUser" placeholder="Inserire username"
+							value="${userAttribute.username}" required>
 						<div class="invalid-feedback" id="errorUsername"> Il campo username risulta vuoto!</div>
 				</div>
-				
-				
-				
+	
 				<c:if test="${isCreato}">
 				<div class="form-group col-md-6">
 					<label>Stato</label> 
@@ -171,53 +158,29 @@
 					<div class="invalid-feedback" id="errorRuoli"> Non risulta selezionato alcun ruolo!</div>
 				</div>
 				</c:if> 
-				
-				<c:if test="${!isCreato}">
-				<Input type="hidden" name="stato"
-					id="statoNascosto" class="form-control"
-					value="${userAttribute.stato}">
 					
-					<c:forEach items="${userAttribute.ruoli}" var="ruoloSelezionato">
-						<input class="form-check-input" type="hidden" required
-						value="${ruoloSelezionato.id}" id="ruoli" name="idRuoli">
-					</c:forEach>
-				</c:if>
-
-				<Input type="hidden" name="nomeUserPerRicerca"
-					id="nomeUtenteDaPassare" class="form-control"
-					value="${requestScope.nomePerTornareAllaRicercaEffettuata}">
-
-				<Input type="hidden" name="cognomeUserPerRicerca"
-					id="cognomeUtenteDaPassare" class="form-control"
-					value="${requestScope.cognomePerTornareAllaRicercaEffettuata}">
-
-				<Input type="hidden" name="usernameUserPerRicerca"
-					id="usernameUtenteDaPassare" class="form-control"
-					value="${requestScope.usernamePerTornareAllaRicercaEffettuata}">
-
-				<Input type="hidden" name="statoUserPerRicerca"
-					id="statoUtenteDaPassare" class="form-control"
-					value="${requestScope.statoPerTornareAllaRicercaEffettuata}">
-
-				<Input type="hidden" name="ruoliUserPerRicerca"
-							id="ruoliUserDaPassare" class="form-control"
-							value="${requestScope.ruoliPerTornareAllaRicercaEffettuata}">
-
-				</div>
+					<c:if test="${!isCreato}">
+					<Input type="hidden" name="stato"
+						id="statoNascosto" class="form-control"
+						value="${userAttribute.stato}">
+						
+						<c:forEach items="${userAttribute.ruoli}" var="ruoloSelezionato">
+							<input class="form-check-input" type="hidden" required
+								value="${ruoloSelezionato.id}" id="ruoli" name="idRuoli">
+						</c:forEach>
+					</c:if>
+			</div>
+			
 				<button type="submit" name="submit" value="submit" id="submit"
 					class="btn btn-primary">Conferma</button>
-
-				<!-- end card-body -->
-			
 		</form>
 
-<!-- end card-body -->
+	<!-- end card-body -->
+	</div>
 </div>
-		</div>
 
 		<!-- end container -->
 	</main>
 	<jsp:include page="../footer.jsp" />
-
 </body>
 </html>

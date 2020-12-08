@@ -47,29 +47,29 @@ body {
 				<div class="col-md-6">
 					<h2>Compra Credito</h2>
 					<p>Acquista credito per giocare</p>
-					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PrepareCompraCreditoServlet" 
-							role="button" Style="background-color:green; border-color:#327827" >Compra &raquo;</a>
-					</p>
+						
+						<p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PrepareCompraCreditoServlet" 
+							role="button" Style="background-color:green; border-color:#327827" >Compra &raquo;</a></p>
+						
 				</div>
 				<c:if test="${user.isInGioco()}">
 				<div class="col-md-6">
 					<h2>Go To Last Game</h2>
 					<p>Hai una partita in corso!</p>
-					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PreparePartitaServlet" 
-							role="button" Style="background-color:green; border-color:#327827">Gioca &raquo;</a>
-					</p>
+					
+						<p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PreparePartitaServlet" 
+							role="button" Style="background-color:green; border-color:#327827">Gioca &raquo;</a></p>
+					
 				</div>
 				</c:if>
-				<c:if test="${user.isInGioco() eq 'false'}">
+				<c:if test="${!user.isInGioco()}">
 				<div class="col-md-6">
 					<h2>Ricerca Partite</h2>
 					<p>Inizia a giocare!</p>
-					<p>
-						<a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PrepareSearchPartiteServlet" 
-							role="button" Style="background-color:green; border-color:#327827">Ricerca &raquo;</a>
-					</p>
+					
+						<p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/play/PrepareSearchPartiteServlet" 
+							role="button" Style="background-color:green; border-color:#327827">Ricerca &raquo;</a></p>
+					
 				</div>
 				</c:if>
 			</div>
